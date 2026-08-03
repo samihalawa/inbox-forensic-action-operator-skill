@@ -82,6 +82,19 @@ const requiredConcepts = [
   ['live-send confirmation', 'references/execution-safety.md', /explicit final confirmation/],
   ['all-device GOWA discovery', 'references/channel-runbooks.md', /inventory every `logged_in` device before deciding relevance/],
   ['self-generated automation suppression', 'references/state-and-action-model.md', /self-generated automation/],
+  ['pre-triage classifier', 'references/state-and-action-model.md', /Actionable_Conversation.*Transactional_Receipt.*System_Alert.*Marketing/s],
+  ['success failure asymmetry', 'references/state-and-action-model.md', /success\/failure asymmetry.*success or completion confirmation.*decline, failure/s],
+  ['priority not urgency copy', 'references/state-and-action-model.md', /Do not rank on urgency-sounding wording alone.*current user priorities.*deadline proximity/s],
+  ['channel escalation ladder', 'references/state-and-action-model.md', /email -> WhatsApp -> phone/],
+  ['stale warm cold drafts', 'references/channel-runbooks.md', /stale.*3\+ days.*warm.*cold/s],
+  ['expected missing mail', 'references/channel-runbooks.md', /expected verification.*never arrived.*spam\/trash.*provider dashboards/s],
+  ['crm object model', 'references/channel-runbooks.md', /account\/company as Lead.*person as Contact.*Opportunity.*Task.*Activity\/Note/s],
+  ['crm action view', 'references/channel-runbooks.md', /Action Now.*Waiting.*Scheduled.*Closed.*large accurate backlog/s],
+  ['numeric claim discipline', 'references/execution-safety.md', /numeric claim.*actual, projection, GMV, revenue.*as-of date/s],
+  ['sender brand claim routing', 'references/execution-safety.md', /brand\/account identity.*restrict claims.*another sender persona/s],
+  ['campaign draft only', 'references/execution-safety.md', /outbound campaigns.*draft mode.*prioritize reply handling.*send volume/s],
+  ['grouped storm count', 'references/state-and-action-model.md', /compact count such as `x12`/],
+  ['warm draft rank', 'references/state-and-action-model.md', /stale draft.*named human.*warm-human rank/s],
   ['account identity coverage', 'references/channel-runbooks.md', /exact address.*multi-account coverage|account selector.*every relevant mailbox/s],
   ['chronological search ordering', 'references/channel-runbooks.md', /Most relevant.*Most recent/s],
   ['absolute time-boundary verification', 'references/channel-runbooks.md', /half-open.*IANA timezone.*DST.*post-filter/s],
@@ -124,7 +137,7 @@ const scenarioMatches = [...acceptanceSection.matchAll(/^(\d+)\.\s+(.+)$/gm)];
 const scenarioNumbers = scenarioMatches.map((match) => Number(match[1]));
 const scenarioTexts = scenarioMatches.map((match) => match[2].trim());
 const scenarioCount = scenarioMatches.length;
-if (scenarioCount < 49) errors.push(`Too few acceptance scenarios: ${scenarioCount}`);
+if (scenarioCount < 63) errors.push(`Too few acceptance scenarios: ${scenarioCount}`);
 if (scenarioNumbers.some((number, index) => number !== index + 1)) {
   errors.push('Acceptance scenario numbers must be unique, contiguous, and start at 1');
 }
@@ -141,6 +154,12 @@ const requiredScenarioIds = [
   'GOWA-RAW-JID-DEDUPE', 'PUBLIC-CREDENTIAL-REJECTION', 'MEETING-NO-SHOW',
   'MEETING-UNBOUND-MATERIAL', 'OPTIONAL-SIBLING-SKILL', 'MESSAGE-ID-COLLISION',
   'SECRET-SHAPES', 'SCENARIO-INTEGRITY',
+  'SUCCESS-FAILURE-ASYMMETRY', 'STALE-WARM-DRAFT', 'STALE-COLD-BATCH',
+  'EXPECTED-MAIL-MISSING', 'PRIORITY-NOT-URGENCY-COPY', 'CHANNEL-ESCALATION-LADDER',
+  'NUMBER-TYPE-ASOF', 'CRM-OBJECT-MODEL', 'CRM-ACTION-VIEW',
+  'TYPO-CORRECTION-EXECUTION',
+  'WARM-DRAFT-RANK', 'GROUPED-STORM-COUNT', 'BRAND-NUMBER-CLAIM',
+  'CAMPAIGN-DRAFT-ONLY',
 ];
 const scenarioIds = [...acceptanceSection.matchAll(/^\d+\.\s+`\[([A-Z0-9-]+)\]`/gm)].map((match) => match[1]);
 if (new Set(scenarioIds).size !== scenarioIds.length) errors.push('Acceptance scenario IDs must be unique');

@@ -21,6 +21,10 @@ If one consequential fact is unknown, block only the affected action and continu
 - Read the complete latest thread, relevant sent history, meeting/CRM context, required attachments, and current form fields.
 - Search existing drafts in the same thread and compare content before creating a new one.
 - Preserve the original language, voice, sender identity, thread, and actual request.
+- Resolve the correct brand/account identity and restrict claims to facts proven for that identity; do not borrow product, employer, financial, or ownership claims from another sender persona.
+- Match the user's current verified voice and the thread's language; keep replies concise, direct, and next-step focused without apology padding, fake enthusiasm, or corporate filler.
+- Re-verify every numeric claim. Preserve the number's type and scope—actual, projection, GMV, revenue, balance, rate, salary, recovery, or run-rate—and its as-of date. Never blend unlike numbers or inherit a figure from an old draft.
+- In dispute, ownership, legal, settlement, or other high-consequence lanes, draft only from exact current-thread facts and the explicitly authorized position; never intensify or invent an assertion.
 - Do not leave silent placeholders or assert unverified facts.
 - Read back draft ID, thread ID, From, To/CC/BCC, subject, body, and attachments.
 - A draft is never action proof beyond `drafted`.
@@ -47,6 +51,8 @@ Preserve the real-send safety affordance:
 5. Read back Sent/thread or GOWA message ID and current chat.
 
 Never silently convert audit, simulation, or draft mode into a real send.
+
+For outbound campaigns, keep unconfirmed batches in draft mode, review the exact final text and recipients, send only the explicitly confirmed batch, and prioritize reply handling over additional send volume. Never turn a stale batch into a blast.
 
 ## Idempotency And Ambiguous Results
 

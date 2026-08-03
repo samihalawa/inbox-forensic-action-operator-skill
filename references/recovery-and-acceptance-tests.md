@@ -96,6 +96,20 @@ Review every scenario before publishing a material change:
 47. `[MESSAGE-ID-COLLISION]` The same provider message ID appears with different JID/direction/participant context: preserve both pending collision resolution; content/time is not sole merge proof.
 48. `[SECRET-SHAPES]` Public files contain an authorization value, common token prefix, auth/session assignment, cookie, or PEM private key: validation fails unless only `[REDACTED_SECRET]` is present.
 49. `[SCENARIO-INTEGRITY]` Scenario numbers or stable IDs are duplicated, missing, or out of order: structural validation fails.
+50. `[SUCCESS-FAILURE-ASYMMETRY]` One provider message says verification succeeded and a newer one says payment or verification failed: suppress the stale success from action-only output and retain the current failure with its exact owner/action.
+51. `[STALE-WARM-DRAFT]` A named-human draft is 4 days old and still accurate: classify it warm/stale and return one send/update/kill disposition instead of another rewrite.
+52. `[STALE-COLD-BATCH]` Twenty uncontacted campaign drafts are 5 days old: group them as a cold batch below warm open loops and never auto-send because of age.
+53. `[EXPECTED-MAIL-MISSING]` A provider says a verdict or reset email was issued but no mailbox result appears: search spam/trash, aliases, provider state, and delivery configuration; absence is a signal, not proof nothing happened.
+54. `[PRIORITY-NOT-URGENCY-COPY]` A trivial automated alert uses urgent language while a quiet human offer has a real deadline: rank the offer first using objective impact and current priorities.
+55. `[CHANNEL-ESCALATION-LADDER]` Email plus one follow-up received no reply and verified WhatsApp/phone routes exist: suppress a third email and choose the next appropriate channel without duplicate contact.
+56. `[NUMBER-TYPE-ASOF]` A draft mixes projected GMV, actual revenue, balance, and run-rate: block the action until each number retains its type, scope, source, and as-of date.
+57. `[CRM-OBJECT-MODEL]` A WhatsApp participant and two roles share one company: use one canonical Lead, a deduplicated Contact, two Opportunities, one current Task per action, and Activities/Notes as evidence.
+58. `[CRM-ACTION-VIEW]` The truthful pipeline contains 200 inactive cards: keep the pipeline, create a native focused action view, and verify its rendered filter/counts rather than calling the full board usable.
+59. `[TYPO-CORRECTION-EXECUTION]` A typo-heavy ALL-CAPS correction says many things are missing: decode it as a repair request, self-critique, patch the validated failure class, and re-run proof without praise-mirroring or an options-only response.
+60. `[WARM-DRAFT-RANK]` One named-human stale draft competes with a cold batch: rank the warm open loop with human actions and keep the cold batch last.
+61. `[GROUPED-STORM-COUNT]` Twelve duplicate alerts exist: return one incident with `x12`, newest event time, and recoverable source IDs.
+62. `[BRAND-NUMBER-CLAIM]` A draft from one account borrows another product's revenue projection: block it until sender/brand identity, number type, source, and as-of date all match.
+63. `[CAMPAIGN-DRAFT-ONLY]` A stale outbound batch is present and no exact live batch was confirmed: keep it draft-only, review final recipients/text, and prioritize inbound reply handling over more sends.
 
 ## Release Checklist
 

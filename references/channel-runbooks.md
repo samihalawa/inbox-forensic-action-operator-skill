@@ -24,6 +24,7 @@ Load only the sections relevant to the requested sources. Never copy credentials
 - In Gmail UI, switch `Most relevant` to `Most recent` before chronological pagination. `1–100 of many` is explicitly incomplete.
 - Consume every cursor/page before claiming full coverage. For each page record the range/token, returned IDs, declared total, and duplicates. The lane remains partial if the connector cannot expose completeness or if counts/totals disagree.
 - When both rich search and ID-only search exist, first record whether each returns message IDs or thread IDs. Normalize both routes to one namespace after equivalent query, labels, sort, window, and page exhaustion, then compare deduplicated sets. A disagreement is proof debt, not an empty or full result.
+- Treat an expected verification, verdict, password reset, calendar notice, delivery result, or provider response that never arrived as a candidate signal. Search spam/trash, alternate aliases, provider dashboards, and delivery/auth configuration before concluding nothing happened.
 
 ### Thread Read
 
@@ -36,6 +37,8 @@ Load only the sections relevant to the requested sources. Never copy credentials
 ### Drafts, Delivery, And Bounces
 
 - Search existing drafts in the same thread before creating another. Update or remove a stale draft only after proving it is superseded and preserving useful content.
+- Record draft age. Default `stale` to 3+ days unless the user or domain supplies a stricter window. Split named-human/prior-contact drafts into `warm` and bulk/uncontacted drafts into `cold`.
+- For a stale warm draft, prefer one deliberate `send`, `update`, or `kill` decision over repeated rewriting. Keep cold batches below warm open loops and never auto-send them merely because they are old.
 - Read back exact To/CC/BCC, From, subject, body, attachments, draft ID, and thread ID.
 - After sending, read Sent and the thread. Bind delivery-failure searches to the exact recipient, message/thread ID, and send window.
 - An empty immediate bounce query means `transport accepted / no bounce observed`, not delivered. Reserve `delivery confirmed` for recipient/provider evidence. When outcome matters, perform or schedule a delayed check and record it as pending until completed.
@@ -44,12 +47,15 @@ Load only the sections relevant to the requested sources. Never copy credentials
 
 - Search exact organization, contact, domain, phone, role, requisition, and known aliases before creating anything.
 - Reuse the canonical lead/opportunity. Do not create parallel records or pipelines to avoid reconciling the existing one.
+- Preserve the native object model: account/company as Lead, person as Contact, distinct role/assignment/deal as Opportunity, next action as Task, and communication proof as Activity/Note. Do not store an identified person only as a note or invent an Opportunity before a real opportunity exists.
+- When organizing identified WhatsApp participants into CRM, normalize and deduplicate the phone/JID identity, then create or update the Contact under the canonical Lead before treating the reconciliation as complete.
 - Read the full lead, contacts, opportunities, latest task, latest activity, notes, status history, and synchronized email/meeting/WhatsApp events.
 - Distinguish activity `date_created` or sync time from the communication's real event time.
 - Treat labels, notes, opportunity stages, and imported activities as leads until matched to primary communication/provider evidence.
 - Prevent duplicate opportunities and duplicate open follow-up tasks. Keep one truthful current action task per real next action unless the workflow genuinely requires multiple owners.
 - Resolve full live IDs before mutation, mutate narrowly, and read back every changed field/object.
 - Update CRM only after external truth is known; CRM organization is not proof the external event occurred.
+- Keep one truthful pipeline, then use native focused saved views such as `Action Now`, `Waiting`, `Scheduled`, and `Closed`. A large accurate backlog is not an actionable daily view. Verify the rendered filter, visible counts, card placement, and zero-result states after setup.
 
 ## Meetings, Calendar, And Pocket
 

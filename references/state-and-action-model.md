@@ -91,7 +91,7 @@ Examples:
 
 - Use an explicit promised date, deadline, service window, or user instruction when available.
 - Otherwise infer no arbitrary deadline. State `none found` until a domain-appropriate policy is established.
-- One unanswered follow-up should trigger a duplicate-risk check and consideration of a verified alternate channel; do not manufacture endless email sequences.
+- After one unanswered follow-up, run a duplicate-risk check and prefer the verified escalation ladder `email -> WhatsApp -> phone` where those routes are current and appropriate; do not manufacture a third email by default.
 - Cross-channel escalation must reuse current context and avoid contacting the same person twice for the same ask.
 
 ## Action-Only Selection
@@ -111,12 +111,30 @@ Exclude:
 - generic alerts, newsletters, promotions, receipts, and unrelated infrastructure;
 - monitoring-only items unless the user asked for monitors or the check is due now.
 
+## Pre-Triage Classification
+
+Use native/source-side narrowing first, without broad fallback floodgates. Then classify compact sender, subject, headers, and snippet evidence as:
+
+- `Actionable_Conversation`: a human exchange or concrete request that may require action;
+- `Transactional_Receipt`: a receipt or benign confirmation with no unresolved failure;
+- `System_Alert`: machine mail whose failure, decline, deadline, security, delivery, or provider state may affect the objective;
+- `Marketing`: newsletters, bulk promotions, social alerts, and generic campaigns.
+
+Only hydrate and deeply analyze candidates that can affect the requested objective: actionable conversations plus relevant system alerts. Use full thread/provider evidence before final state. Personalized automation can resemble a human message, so keywords and headers alone are not final classification.
+
+Apply the success/failure asymmetry explicitly:
+
+- matched success or completion confirmation with no remaining action: suppress from action-only output;
+- decline, failure, cancellation, deadline, security incident, delayed/permanent delivery failure, or expected message missing: retain when relevant;
+- conflicting success and failure: reconstruct the timeline and let the newest verified provider-owned event decide.
+
 ## Ranking
 
 ### Deduplication And Noise
 
 - Normalize reply/forward prefixes and volatile machine IDs, timestamps, or dates only to identify the same machine-alert family.
 - Group exact automation storms by normalized subject, sender, target identity, and event type; retain the message count, newest event time, and source IDs.
+- Render grouped storms with a compact count such as `x12`; never let twelve copies occupy twelve attention rows.
 - Never use subject normalization alone to merge distinct human opportunities, roles, conversations, or state-changing events.
 - Exclude self-generated automation unless an external human participates, the automation changes external state, or it directly affects the requested objective.
 - Keep excluded categories and grouped counts recoverable so a false-negative classification can be audited.
@@ -133,3 +151,5 @@ Rank after deduplication:
 6. low-information chatter or cold batch work.
 
 Do not let a noisy alert storm outrank one high-value human action.
+An accurate stale draft to a named human/prior contact inherits the warm-human rank; only stale cold batches remain at the bottom.
+Do not rank on urgency-sounding wording alone. Use current user priorities, objective impact, money or opportunity movement, deadline proximity, human-versus-machine evidence, reversibility, and the verified next-action owner. Current live priorities must be recovered from the task or current durable sources; never hard-code dated priorities into the public skill.

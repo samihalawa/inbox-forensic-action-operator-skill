@@ -1,8 +1,20 @@
 # INDEX
 
+attention quality | technically complete source recovery still surfaces wrong actions | apply success/failure asymmetry, stale warm/cold draft policy, current-priority ranking, missing-mail checks, and focused CRM views | do not equate accurate inventory with useful attention output | replay action-ranking and CRM-view fixtures
 source completeness | connector success or list metadata treated as full truth | bind identity, bounds, sort, cursors, totals, and hydrated event IDs | do not infer all from relevance, one account/device, or declared totals | replay real pagination and boundary fixtures
 proof and authority | transport/no-bounce or acceptance collapsed into higher outcomes | keep delivery, acceptance, hire, onboarding, and start separate; require final send confirmation | do not let source access grant mutation authority | run package invariants and acceptance scenarios
 inbox/action recovery | output filters replaced full discovery | recover globally, filter presentation last | do not infer completeness from recent or human-only results | require source ledger and latest-state proof
+
+## 2026-08-04 — CURRENT — Attention quality requires post-recovery action policy
+
+- Project: `inbox-forensic-action-operator-skill`; surface: triage ranking, drafts, escalation, and CRM attention views.
+- Regression caught: strong source-completeness rules still omitted success/failure asymmetry, 3-day warm/cold draft handling, missing expected mail, current-priority scoring, numeric claim labels, and a focused CRM daily view.
+- Superior route: narrow at source, pre-classify conservatively, hydrate objective-relevant conversations/alerts, rank on live impact/deadlines, and render only actionable native views.
+- Evidence: EMAIL AI MASTER instructions plus the 59-message critique; `v2.2.0` grep showed only generic stale/cold mentions and no executable invariants for these lanes.
+- Trigger terms: `many missing`, `attention`, `stale drafts`, `urgent`, `declined`, `expected email`, `Action Now`, `numbers`.
+- Do: preserve warm/cold age, success/failure state, channel ladder, number type/as-of, and CRM object/view proof.
+- Don't: auto-send old batches, rank urgency copy, suppress missing expected mail, or call a 200-card backlog usable.
+- Verify before reuse: package validator scenarios 50–59 plus rendered CRM filter/count proof when a live view is promised.
 
 ## 2026-08-03 — CURRENT — Completeness is an executable source contract
 

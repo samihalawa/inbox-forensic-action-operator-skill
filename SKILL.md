@@ -1,7 +1,7 @@
 ---
 name: inbox-forensic-action-operator-skill
 description: This skill should be used to reconstruct complete email, CRM, meeting, WhatsApp, calendar, ATS, and browser-action timelines before triaging, drafting, sending, updating records, or submitting forms. It applies to attention audits, unanswered-message checks, job or sales opportunity status, offer or acceptance verification, cross-channel follow-up, stale drafts, recruiter pipelines, and recovery after narrow searches, stale context, unsupported assumptions, duplicate actions, or false completion.
-version: 2.2.0
+version: 2.3.0
 ---
 
 # Inbox Forensic Action Operator
@@ -33,6 +33,9 @@ Interpret recurring phrases precisely:
 - `draft`: create drafts only;
 - `send`, `reply`, `fire it`: prepare the exact final action and apply the live-send gate;
 - `complete`, `execute`, `take action`: perform every safe step only within the mutation classes explicitly authorized by the request; naming or reading a source never grants write authority.
+- heavy typos: decode operational intent from the surrounding task, preserve explicit constraints, and act on the normalized request rather than mirroring the wording;
+- ALL CAPS: treat as emphasis or urgency, not praise or excitement;
+- `critique`, `many missing`, `wrong`, `again`: inspect the existing result, repair the validated defects, sweep the same failure class, and re-run proof instead of returning options or a fresh summary.
 
 Do not let a later short request erase durable constraints from the same task unless the user explicitly reverses them.
 
@@ -175,6 +178,15 @@ Then provide:
 
 Finish with coverage, latest-event corrections, excluded categories, executed mutations with read-back proof, ambiguous results resolved, and a flat unresolved inventory.
 
+For an attention view, render only the sections supported by the request and evidence:
+
+1. `Needs Reply` — human threads with user-owned action, ranked after deduplication;
+2. `Stale Drafts` — age, warm/cold lane, and send/update/kill disposition;
+3. `Open Loops` — user-owned non-reply actions and follow-ups due now;
+4. `Critical Signals` — objective-relevant failures, declines, deadlines, or missing expected machine mail, grouped by incident.
+
+Use plain business vocabulary. Do not bury the action ledger in decorative classifier names, walls of prose, fake terminal language, or broken-source cards.
+
 For conversation critique or recovery artifacts, load [Recovery And Acceptance Tests](references/recovery-and-acceptance-tests.md).
 
 ## Completion Gate
@@ -190,12 +202,16 @@ Before closure, prove:
 - every entity has a canonical latest-state record;
 - separate opportunities were not merged by employer or domain alone;
 - follow-up-due items were not hidden as merely waiting;
+- successful confirmations were not promoted into action while matched failures, declines, deadlines, and missing expected mail remained visible;
+- stale drafts were aged and split into warm versus cold lanes before ranking;
+- ranking used current user priorities, objective impact, deadline proximity, and human/system evidence rather than urgency-sounding language alone;
 - drafts, sends, delivery, replies, forms, offers, acceptance, and start remain separate;
 - duplicate drafts/actions and ambiguous retries were prevented;
 - attachments and sender/recipient/thread identity were read back;
 - delayed-bounce or later-provider checks are scheduled or explicitly pending when relevant;
 - no consequential user fact was invented;
 - every mutation has same-layer proof;
+- any promised CRM attention surface was verified as a focused rendered action view, not merely an accurate full backlog;
 - unresolved proof debt is counted and paired with the next exact probe.
 
 If any required item remains false, close as `CHECKPOINT`, not completion.
