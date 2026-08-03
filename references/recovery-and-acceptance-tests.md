@@ -32,7 +32,9 @@ Skip this fanout for ordinary bounded inbox work when the current primary source
 ## Default Recovery Prompt
 
 ```text
-Recover the requested entities, discovery scope, output filter, time window, exclusions, authorized mutations, and proof target from the current and referenced tasks. Treat prior assistant conclusions, summaries, and CRM labels as leads only. Build an honest coverage ledger; discover relevant mailbox identities; search native Gmail in both directions across alias continuity and every entity pivot; read complete threads, drafts, attachments, and delivery state; read exact Close records and latest activities; verify Pocket recordings by title, date, participants, and transcript; enumerate current GOWA logged-in devices and inspect relevant chats on each; and inspect calendars, ATS/provider pages, and authenticated forms.
+Recover the requested entities, discovery scope, output filter, time window, exclusions, authorized mutations, and proof target from the current and referenced tasks. Treat prior assistant conclusions, summaries, and CRM labels as leads only. Build an honest coverage ledger that records exact source identity, route, sort mode, a half-open local interval in an explicit IANA timezone, independently converted UTC bounds, cursor/offset, returned count, declared total, ID namespace, and stable IDs. If one connector fails, classify that route and continue through independent native/API, direct-transport, and authenticated-browser routes.
+
+Discover relevant mailbox identities; search Gmail in both directions across alias continuity and every entity pivot; force chronological order; exhaust pages; normalize equivalent routes to the same ID namespace; reconcile ID sets and totals; and read complete threads, drafts, attachments, and delivery state. Read exact Close records and latest activities. Verify Pocket recordings by source-native title, participants, and entity-bound transcript interval rather than semantic/OCR text alone. Enumerate every current GOWA logged-in device, preserve every raw JID domain, reconcile pagination totals with hydrated message timestamps, and inspect relevant media. Inspect calendars, ATS/provider pages, and authenticated forms.
 
 Construct one chronological record per real opportunity using occurred-at time rather than sync time. Keep separate roles separate. Apply strict offer, acceptance, action, and proof gates. Track response owner separately from next-action owner so due follow-ups are not hidden. Let the newest verified event override stale state. Never invent personal facts.
 
@@ -51,7 +53,7 @@ Review every scenario before publishing a material change:
 4. Two roles share one employer and recruiter: retain two canonical records.
 5. The user excludes payments and GitHub for this run: honor the output exclusion without hard-coding permanent suppression.
 6. Multiple mailbox accounts or aliases exist: search each relevant identity; do not assume `me` spans all accounts.
-7. GOWA exposes multiple logged-in devices: inspect every relevant device discovered in the current run.
+7. GOWA exposes multiple logged-in devices: inventory every device before deciding relevance, then inspect and classify each for the requested scope.
 8. A connector caps results or omits a cursor: coverage remains partial.
 9. A semantic meeting search returns related but wrong recordings: verify title, date, participants, and transcript before use.
 10. The user sent a reply in another channel: suppress the duplicate email action.
@@ -73,6 +75,27 @@ Review every scenario before publishing a material change:
 26. An old inbound was later answered by the user: exclude it from unanswered/action-only output even if the thread remains prominent.
 27. An opportunity exists only in Close or an ATS with no Gmail thread: retain it in the global entity inventory and mark Gmail evidence absent rather than dropping it.
 28. Twelve self-generated copies of one machine alert compete with one human action: group the storm with count/newest time and keep the human action visible.
+29. `[MAIL-AUTH-ROUTE]` A Gmail connector returns a reauthentication error: mark that connector route blocked, then try an independently configured native/direct route and authenticated browser; never report the mailbox empty.
+30. `[MAIL-ACCOUNT-IDENTITY]` A connector profile exposes one address but no account enumeration: record that exact address and keep multi-account coverage partial unless the requested scope is proven to contain only it.
+31. `[TIME-HALF-OPEN-DST]` A date-only query for a local midnight window returns adjacent-day rows: define `[start,end)` in an IANA timezone, convert both endpoints independently, query a safe superset, and post-filter event timestamps.
+32. `[MAIL-CHRONO-PAGES]` Gmail search opens as `Most relevant` with `1–100 of many`: switch to `Most recent` and paginate until the final numeric range before any chronological or all-mail claim.
+33. `[THREAD-DEFAULT-CAP]` A thread reader returns only a default most-recent subset: raise the limit or use message-level fallback; reconcile returned/declared counts and oldest/newest boundaries.
+34. `[MAIL-ID-NAMESPACE]` Rich and ID-only searches disagree: normalize equivalent searches to the same message-ID or thread-ID namespace before comparing; unresolved disagreement keeps coverage partial.
+35. `[MEETING-INTERVAL-CONTAMINATION]` One recorder session spans a target interview and a later unrelated call containing positive language: partition the recording; the unrelated interval cannot update the interview state.
+36. `[MEETING-SEMANTIC-PROVENANCE]` A semantic meeting hit contains the role only inside a pasted AI prompt or OCR text: exclude it unless native title/participant/time-interval evidence independently links it.
+37. `[MEETING-EVENT-VS-OBSERVED]` A recording is opened or processed after the event: chronology uses the verified target interval, not UI-view or detector-end time.
+38. `[MEETING-SCHEDULED-NOT-ATTENDED]` An upcoming item exists without participant-bound attendance, an entity-bound target transcript, or explicit occurrence confirmation: keep `scheduled`, never `completed`.
+39. `[GOWA-ALL-DEVICES]` GOWA reports multiple logged-in devices with materially different chat inventories: inventory every device before relevance filtering and reconcile messages before any global WhatsApp claim.
+40. `[GOWA-PAGINATION-MISMATCH]` A GOWA page declares 28 messages but returns 27 and later offsets are empty: coverage is partial and the missing record remains proof debt.
+41. `[GOWA-HYDRATED-RECENCY]` A chat-list row claims recent activity but hydrated messages end outside the window: treat list metadata as a hint, widen discovery, and block an all-window claim.
+42. `[GOWA-RAW-JID-DEDUPE]` GOWA returns non-person/group JID domains and overlapping JIDs across devices: retain every raw JID and deduplicate by provider message ID plus JID, direction, and participant context.
+43. `[PUBLIC-CREDENTIAL-REJECTION]` A connector skill or example contains a literal authorization value: ignore/redact it and resolve credentials through the configured secret provider or environment.
+44. `[MEETING-NO-SHOW]` A no-show email, empty recorder transcript, or automated post-event notice exists: classify `no-show`, `scheduled`, or `unclear`; none alone proves completion.
+45. `[MEETING-UNBOUND-MATERIAL]` A long recording cannot be partitioned with defensible participant/context/time boundaries: keep material unbound and coverage partial; never guess the entity.
+46. `[OPTIONAL-SIBLING-SKILL]` A named sibling skill is not installed but equivalent task/thread/history/GOWA capabilities exist: use those capabilities and record the missing helper; do not mark the source absent.
+47. `[MESSAGE-ID-COLLISION]` The same provider message ID appears with different JID/direction/participant context: preserve both pending collision resolution; content/time is not sole merge proof.
+48. `[SECRET-SHAPES]` Public files contain an authorization value, common token prefix, auth/session assignment, cookie, or PEM private key: validation fails unless only `[REDACTED_SECRET]` is present.
+49. `[SCENARIO-INTEGRITY]` Scenario numbers or stable IDs are duplicated, missing, or out of order: structural validation fails.
 
 ## Release Checklist
 

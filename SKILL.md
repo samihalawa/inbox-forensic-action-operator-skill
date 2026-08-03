@@ -1,7 +1,7 @@
 ---
 name: inbox-forensic-action-operator-skill
 description: This skill should be used to reconstruct complete email, CRM, meeting, WhatsApp, calendar, ATS, and browser-action timelines before triaging, drafting, sending, updating records, or submitting forms. It applies to attention audits, unanswered-message checks, job or sales opportunity status, offer or acceptance verification, cross-channel follow-up, stale drafts, recruiter pipelines, and recovery after narrow searches, stale context, unsupported assumptions, duplicate actions, or false completion.
-version: 2.1.0
+version: 2.2.0
 ---
 
 # Inbox Forensic Action Operator
@@ -68,22 +68,24 @@ Compare the real event time, not merely import, synchronization, indexing, or ob
 
 For continuation, correction, referenced-task, or prior-failure work:
 
-1. Use Codex task tools and `codex-internal-tools-threads-plans-goals-skill` first.
+1. Use Codex task tools first. When installed, use `codex-internal-tools-threads-plans-goals-skill` for routing; otherwise use the available task/thread/goal capabilities directly.
 2. Read selected messages sequentially when complete or line-by-line analysis is requested.
 3. Record counts, coverage, promises, proven mutations, corrections, exclusions, and suspicious completion claims.
-4. Use `conversation-history-recovery-skill` only when the Codex task is insufficient or cross-source reconstruction is explicitly required.
+4. When installed, use `conversation-history-recovery-skill` only when the Codex task is insufficient or cross-source reconstruction is explicitly required; otherwise recover through the available primary conversation/history sources and record the missing capability.
 5. Treat Notion, Chronicle, Screenpipe, memory, and histories as evidence or reusable guidance, never as authority over the current request.
 
 ### 2. Build The Coverage Ledger
 
 Before conclusions, maintain:
 
-| Source | Scope/window | Inbound | Outbound | Archive/drafts | Attachments/media | Pages/results | Coverage |
-|---|---|---:|---:|---:|---:|---:|---|
+| Source identity | Route | Exact scope/window | Inbound | Outbound | Archive/drafts | Attachments/media | Pages/results/totals | Coverage |
+|---|---|---|---:|---:|---:|---:|---:|---|
 
 Use only `full`, `partial`, `sampled`, `missing`, or `blocked`. One label, account, alias, result page, device, date slice, semantic hit, or convenience view is never global coverage.
 
-Discover or lazy-load relevant connectors before calling a source unavailable. If a connector caps, truncates, samples, or omits a cursor, record that limitation and use the next viable native/API/browser route.
+Record the exact mailbox address, workspace, account, profile, and device returned by the source. If a connector exposes only one identity and cannot enumerate others, that identity may be full while requested multi-account coverage remains partial.
+
+Discover or lazy-load relevant connectors before calling a source unavailable. If a connector fails authentication, caps, truncates, samples, sorts by relevance, omits a cursor, or disagrees with its declared total, record the exact limitation and continue through the viable native/API, direct-transport, and authenticated-browser routes. A failed route is blocked; the source is not necessarily blocked.
 
 Load [Channel Runbooks](references/channel-runbooks.md) for the sources in scope.
 
@@ -93,9 +95,10 @@ Load [Channel Runbooks](references/channel-runbooks.md) for the sources in scope
 2. Include both directions and the relevant archive, sent, draft, attachment, media, calendar, and provider states.
 3. Build pivots from organization, domain, contact, address, phone/JID, role, subject root, ATS/requisition ID, calendar title, and aliases.
 4. Search each pivot without a direction filter, then verify inbound and outbound explicitly.
-5. Paginate to exhaustion for every global claim and state result/page counts.
-6. Re-run pivots discovered later.
-7. Stop only after every discovered entity has a latest-state check and every gap is explicit.
+5. Define the requested window as half-open `[local_start, local_end)` in an explicit IANA timezone. Convert both endpoints independently to UTC with current DST rules, use a source query that safely contains the window, then post-filter by real event timestamps; boundary dates alone are not exact proof.
+6. Force chronological ordering when a UI defaults to relevance. Paginate until the cursor is absent or the final range is reached, deduplicate stable IDs, and reconcile returned counts against declared totals.
+7. Re-run pivots discovered later.
+8. Stop only after every discovered entity has a latest-state check and every gap is explicit.
 
 ### 4. Construct Canonical Timelines
 
@@ -104,10 +107,12 @@ Keep distinct roles, applications, assignments, deals, and decisions separate ev
 For every event retain:
 
 - `occurred_at` and timezone;
+- `occurred_interval` when a recording or capture spans more than one interaction;
 - `observed_at` or sync time when different;
 - channel and direction;
 - sender, recipient, and source identity;
 - stable thread/message/activity/form/provider identifier;
+- match provenance: source-native title/participant/ID/interval versus semantic text, OCR, prompt, or summary;
 - exact decisive evidence;
 - requested or completed action;
 - proof state and whether it changes the prior state.
@@ -179,7 +184,9 @@ Before closure, prove:
 - discovery scope, output filter, and action authority remained separate;
 - every requested source has an honest coverage label;
 - global searches were paginated and checked both directions;
+- source identity, chronological sort mode, exact absolute bounds, cursor exhaustion, stable-ID deduplication, and declared-total reconciliation were recorded;
 - event time was separated from sync/observation time;
+- long recordings were partitioned into entity-bound intervals and semantic/OCR hits were not treated as entity proof;
 - every entity has a canonical latest-state record;
 - separate opportunities were not merged by employer or domain alone;
 - follow-up-due items were not hidden as merely waiting;

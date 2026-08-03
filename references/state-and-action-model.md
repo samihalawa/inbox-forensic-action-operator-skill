@@ -19,16 +19,18 @@ Never merge solely because two items share an employer, sender domain, recruiter
 Record:
 
 - `occurred_at`: when the real event happened;
+- `occurred_interval`: the entity-bound start/end when a recording, OCR capture, or batch spans multiple interactions;
 - `observed_at`: when the system indexed, imported, synchronized, or exposed it;
 - source/channel and direction;
 - actor and recipient;
 - stable source ID;
+- match provenance: native identity/title/participant/interval or lower-confidence semantic/OCR/summary text;
 - exact decisive evidence;
 - action requested/completed;
 - proof layer;
 - effect on canonical state.
 
-Sort primarily by `occurred_at`. Use `observed_at` to explain late discovery, not to rewrite chronology.
+Sort primarily by the verified entity-bound `occurred_at` or `occurred_interval`. Use recording/detection intervals and `observed_at` to explain late discovery, not to rewrite chronology. Material outside the entity-bound interval cannot change that entity's state.
 
 ## Opportunity State Gates
 
@@ -37,7 +39,7 @@ Use the narrowest state supported by current evidence:
 - `applied / no human reply`: submission proven, no relevant human response;
 - `interview requested`: meeting proposed, slot not confirmed;
 - `interview scheduled`: current event or explicit agreement proves the slot;
-- `interview completed`: attendance, transcript, or post-meeting evidence proves occurrence;
+- `interview completed`: participant-bound attendance, an entity-bound transcript interval containing the interaction, or an explicit post-meeting confirmation proves occurrence;
 - `next stage / assessment`: named round, assessment, references, vetting, or right-to-represent;
 - `positive interest / no offer`: interest without concrete work and material terms;
 - `work offered / terms pending`: concrete work proposed while rate, schedule, scope, contract, or start remains unresolved;
