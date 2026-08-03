@@ -1,4 +1,4 @@
 interface:
   display_name: "Inbox Forensic Action Operator"
-  short_description: "Reconstruct inbox timelines and identify the real next action"
-  default_prompt: "Use $inbox-forensic-action-operator-skill to audit the complete inbound and outbound history across the requested channels, reconstruct each entity timeline, apply strict offer and acceptance gates, identify the latest ball-in-court, and execute only the inbox or CRM actions explicitly authorized by the user."
+  short_description: "Reconstruct cross-channel truth, then execute verified actions"
+  default_prompt: "Use $inbox-forensic-action-operator-skill to recover prior context, build a complete source ledger across native Gmail, Close, meeting transcripts, every relevant GOWA device, calendars, ATS/provider pages, and authenticated browser forms; reconstruct each entity timeline, apply strict state gates, identify the newest ball-in-court, execute only the authorized drafts, sends, CRM updates, or form actions, preserve the live-send confirmation, and verify every mutation at the same external layer."
