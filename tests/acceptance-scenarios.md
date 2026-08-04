@@ -1,0 +1,54 @@
+# Acceptance Scenarios
+
+Development fixtures are not runtime instructions. Each row fixes the recipe, authority, route, coverage, state, forbidden promotion, failure origin, and next proof.
+
+| ID | Recipe | Authority | Input | Expected route | Coverage | Expected state | Failure origin | Forbidden promotion | Proof remaining |
+|---|---|---|---|---|---|---|---|---|---|
+| ROUTE-COVERAGE | coverage | audit | all sources requested | enumerate identities and reconcile routes | partial | coverage ledger | unresolved | no action ranking | reconcile named gaps |
+| ROUTE-ENTITY-STATUS | entity-status | audit | one entity across channels | broad pivots and latest timeline | full | latest supported state | none | no stale-state reuse | none |
+| ROUTE-ATTENTION | attention | audit | actions due now | candidate hydration and ranking | sampled | actionable rows only | unresolved | no global all claim | widen for global coverage |
+| ROUTE-DELIVERY | delivery | audit | were messages delivered | bind draft Sent failure provider reply | partial | lowest proven delivery layer | unresolved | no handoff-to-delivery promotion | provider or recipient proof |
+| ROUTE-RECOVERY | recovery | audit | current task lacks prior scope | task and history context only | partial | recovered scope lead | unresolved | no external truth from history | current primary source read |
+| ADAPTER-STOP | coverage | audit | one source full one gapped | preserve per-source rows | partial | CHECKPOINT | route/environment | no complete verdict | exact next route |
+| ADJACENT-WINDOW-FREEZE | coverage | audit | seven slices one cutoff | mechanical half-open bounds | full | non-overlapping windows | none | no drifting cutoff | none |
+| ADJACENT-WINDOW-MERGE | entity-status | audit | event equals boundary and later override | later window owns equality | full | latest state plus provenance | none | no duplicate boundary event | none |
+| PARTIAL-UNION | coverage | audit | partial slices have different gaps | aggregate source matrix | partial | aggregate partial | unresolved | no full from union | fill every identity/window gap |
+| DOTENV-NAMED-KEYS | coverage | audit | dotenv has spaces extra equals and shell syntax | literal named-key parser | full | route configuration read | none | no source or eval | none |
+| MAIL-IDENTITY-BINDING | coverage | audit | connector target differs from IMAP login | direct account identity readback | partial | account-window full requested-scope partial | route/environment | no inherited identity | enumerate requested accounts |
+| MAIL-CURSORLESS-ENUMERATION | coverage | audit | IMAP returns one finite UID set | UIDVALIDITY criteria range and dedupe | full | account-window full | none | no invented pagination | none |
+| MAIL-DRAFT-NOT-SENT | delivery | audit | authored messages appear in Drafts and All Mail | Draft label and Sent readback | full | drafted | none | no authored-to-sent promotion | none |
+| MAIL-SEND-PROOF | delivery | audit | self-report says sent but Sent has no match | exact mailbox Sent/thread search | partial | attempted or self-reported | unresolved | no sent claim | search other identities/provider |
+| MAIL-HALF-OPEN-DST | coverage | audit | date query returns adjacent-day rows | safe superset then event-time filter | full | exact-window set | none | no date-query exactness claim | none |
+| MAIL-ID-NAMESPACE | coverage | audit | rich and ID searches disagree | normalize message or thread namespace | partial | proof debt | skill | no empty or full claim | reconcile equivalent ID sets |
+| MAIL-THREAD-CAP | entity-status | audit | reader returns recent subset | raise limit or message fallback | partial | incomplete timeline | route/environment | no latest-global claim | oldest and newest boundary reconciliation |
+| MAIL-BOUNCE-LAYER | delivery | audit | immediate bounce query empty | Sent and delayed failure check | partial | no bounce observed | unresolved | no delivery confirmed | delayed provider or recipient proof |
+| CLOSE-AUDIT-ALLOWLIST | coverage | audit | no workspace selected | status config and existing connection list | blocked | workspace missing | route/environment | no ensure login create or write | existing authenticated workspace |
+| CLOSE-FAILURE-TAXONOMY | coverage | audit | extension UI blocks browser control | classify browser_control_blocked | blocked | route blocked | route/environment | no signed-out or absent-source claim | attachable existing browser route |
+| BROWSER-OF-MANY | coverage | audit | Gmail shows one hundred of many | record account query sort and range | partial | focused findings only | route/environment | no global count or all | exhaust pages/message timestamps |
+| BROWSER-AUTH-SEPARATION | coverage | audit | connector OAuth fails browser is signed in | independent browser identity probe | partial | connector blocked source present | route/environment | no source-absent claim | reconcile browser range |
+| GOWA-CURRENT-DEVICES | coverage | audit | devices endpoint returns two logged in | audit both current devices | full | device inventory | none | no stale single-device scope | none |
+| GOWA-RAW-JID | coverage | audit | raw at succeeds encoded form fails | raw JID history route | partial | encoded route-shape failure | provider/source | no missing-history claim | continue raw route |
+| GOWA-ACTUAL-OFFSET | coverage | audit | total twenty-eight page returns twenty-seven | next offset equals twenty-seven | partial | one record outstanding | provider/source | no offset by requested limit | next actual offset |
+| GOWA-DEFICIT-BACKFILL | coverage | audit | next offset empty with outstanding total | native or export backfill ladder | partial | deficit retained | provider/source | no exhaustion claim | provider backfill/export |
+| GOWA-RECENCY-CONTRADICTION | coverage | audit | list is recent hydrated history is older | widen or backfill discovery | partial | list exclusion invalid | provider/source | no window-empty claim | global message route |
+| GOWA-CROSS-DEVICE-DEDUPE | entity-status | audit | same JID on two devices | device and provider context merge key | full | separate histories | none | no JID-only merge | none |
+| GOWA-MEDIA-SEMANTICS | entity-status | audit | binaries reachable but unparsed | metadata binary semantic counts | partial | media proof debt | route/environment | no content or state inference | OCR transcription or parsing |
+| MEETING-SELF-REPORT | entity-status | audit | post-hoc event plus user thanks message | calendar and participant evidence check | partial | user_reported_completed | unresolved | no provider-confirmed completion | counterparty attendance or transcript |
+| MEETING-PROVIDER-PROOF | entity-status | audit | invitation and join link no attendance | meeting provider and participant check | partial | scheduled | unresolved | no completed state | attendance or occurrence proof |
+| MEETING-CANCELLATION | entity-status | audit | original invite and matching cancellation | latest provider event | full | cancelled | none | no scheduled or completed state | none |
+| MEETING-INTERVAL-BINDING | entity-status | audit | long recording spans unrelated calls | partition entity-bound intervals | partial | unbound material excluded | unresolved | no cross-interval state update | participant and interval proof |
+| PROVIDER-ALERT | attention | audit | mail says payment deployment or certificate failed | provider alert ladder | partial | provider_alert_observed | unresolved | no present outcome or recovery | live provider state |
+| FAILURE-ORIGIN | coverage | audit | skill lacks recovery and provider totals conflict | record two separate gaps | partial | CHECKPOINT | skill | no single-cause collapse | skill route plus provider backfill |
+| AUDIT-NO-MUTATION | coverage | audit | reauth and setup options appear | existing read-only routes only | blocked | no mutation | route/environment | no login reauth ensure profile draft send or write | authorized existing route |
+| AMBIGUOUS-MUTATION | delivery | execute | authorized send times out | inspect action fingerprint and target | partial | ambiguous pending readback | unresolved | no blind retry | target-layer ID search |
+| LIVE-SEND-CONFIRMATION | delivery | send | final message is prepared | exact preview then immediate confirmation | partial | ready to send | none | no transmission before confirmation | explicit confirmation |
+| EXTERNAL-MUTATION-CONFIRMATION | entity-status | execute | form booking or provider update lacks exact target values | final review state then immediate confirmation | partial | ready for authorized mutation | unresolved | no bypass of final confirmation affordance | exact target values and confirmation |
+| ATTACHMENT-GATE | delivery | draft | message promises an attachment | open and bind current file | partial | draft blocked if absent | unresolved | no absent attachment claim | verified attachment |
+| FORM-STATE-LAYERS | entity-status | audit | reusable form and receipt both exist | provider submission record | partial | confirmation displayed | unresolved | no provider accepted or externally decided | provider status |
+| OPPORTUNITY-NO-INFERENCE | entity-status | audit | next steps and availability wording | opportunity overlay | full | next stage or interest | none | no offer acceptance or hire | none |
+| CRM-OBJECT-IDENTITY | entity-status | organize | company contact and two roles | one lead contact two opportunities | full | canonical CRM objects | none | no duplicate opportunity | read back object IDs |
+| INCIDENT-GROUPING | attention | audit | twelve duplicate alerts | group by event family and target | full | one incident x12 | none | no twelve action rows | none |
+| SUCCESS-FAILURE-ASYMMETRY | attention | audit | stale success followed by provider failure | latest provider-owned event | full | current failure | none | no stale-success suppression of action | none |
+| CHANNEL-ESCALATION | attention | audit | one unanswered follow-up and alternate routes exist | duplicate check then verified alternate route | partial | escalation due | unresolved | no duplicate same-channel message | current route identity |
+| NUMBER-TYPE-ASOF | delivery | draft | actual and projected money mixed | source type scope and as-of check | partial | action blocked | unresolved | no mixed numeric claim | verified number provenance |
+| SECRET-NONPERSISTENCE | coverage | audit | tracked file has reusable credential value | repository-wide secret lint | blocked | validation failure | skill | no persisted secret | replace with REDACTED_SECRET |

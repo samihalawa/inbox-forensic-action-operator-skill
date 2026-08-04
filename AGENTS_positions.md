@@ -1,9 +1,21 @@
 # INDEX
 
+live adapter execution | prose rules detect gaps but do not select or recover routes deterministically | select one audit recipe, enforce adapter contracts, and stop only on reconciliation or named proof debt | do not infer source absence from route failure or combine partial slices into full | run v3 route fixtures plus live email Close GOWA browser and meeting probes
 attention quality | technically complete source recovery still surfaces wrong actions | apply success/failure asymmetry, stale warm/cold draft policy, current-priority ranking, missing-mail checks, and focused CRM views | do not equate accurate inventory with useful attention output | replay action-ranking and CRM-view fixtures
 source completeness | connector success or list metadata treated as full truth | bind identity, bounds, sort, cursors, totals, and hydrated event IDs | do not infer all from relevance, one account/device, or declared totals | replay real pagination and boundary fixtures
 proof and authority | transport/no-bounce or acceptance collapsed into higher outcomes | keep delivery, acceptance, hire, onboarding, and start separate; require final send confirmation | do not let source access grant mutation authority | run package invariants and acceptance scenarios
 inbox/action recovery | output filters replaced full discovery | recover globally, filter presentation last | do not infer completeness from recent or human-only results | require source ledger and latest-state proof
+
+## 2026-08-04 — CURRENT — Live adapters require deterministic route and stop contracts
+
+- Project: `inbox-forensic-action-operator-skill`; surface: email, Close, browser, GOWA, meeting, provider, and parallel-window audits.
+- Regression caught: broad prose detected incomplete sources but left dotenv parsing, audit-safe CRM access, cursorless mail, JID paths/offsets, backfill, media semantics, browser totals, and window merges to agent improvisation.
+- Superior route: select one audit recipe, apply only in-scope adapters, record identity/range/totals/hydration/failure origin/proof remaining, and stop on reconciliation or explicit `CHECKPOINT`.
+- Evidence: seven adjacent live 48-hour audits (four Terra, three Sol), independent Sol package review, and Terra cross-model comparison in `live-skill-evaluation-2026-08-04`.
+- Trigger terms: `all`, `last N days`, `audit`, `delivery`, `Close`, `GOWA`, `drafts`, `of many`, `pagination`, `again`.
+- Do: use current identities, literal named-key loading, read-only Close allowlist, raw JIDs, actual-returned offsets, and same-layer state proof.
+- Don't: setup auth in audit, call authored Drafts sent, promote alerts/invites/self-reports, or union partial slices into full.
+- Verify before reuse: v3 structured fixtures, installed/source equality, and fresh read-only email/Close/GOWA/browser/meeting probes.
 
 ## 2026-08-04 — CURRENT — Attention quality requires post-recovery action policy
 

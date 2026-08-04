@@ -1,220 +1,95 @@
 ---
 name: inbox-forensic-action-operator-skill
-description: This skill should be used to reconstruct complete email, CRM, meeting, WhatsApp, calendar, ATS, and browser-action timelines before triaging, drafting, sending, updating records, or submitting forms. It applies to attention audits, unanswered-message checks, job or sales opportunity status, offer or acceptance verification, cross-channel follow-up, stale drafts, recruiter pipelines, and recovery after narrow searches, stale context, unsupported assumptions, duplicate actions, or false completion.
-version: 2.3.0
+description: This skill should be used to audit or act on email, CRM, meeting, WhatsApp, calendar, ATS, provider, and browser-action timelines when completeness, latest state, delivery, opportunity status, or safe follow-through matters.
+version: 3.0.0
 ---
 
 # Inbox Forensic Action Operator
 
 ## Outcome
 
-Recover the current truth for every in-scope entity, identify the real latest ball-in-court, and execute only the actions authorized by the user. Treat email, CRM, meetings, WhatsApp, calendars, forms, and provider state as one evidence graph without collapsing their distinct proof layers.
+Recover the current truth for every in-scope entity, identify the latest ball-in-court, and perform only the mutations the user authorized. Treat channels as one evidence graph without collapsing distinct identities, events, or proof layers.
 
-Research must unblock execution. Action must never outrun source truth.
+Research must unblock action. Action must never outrun source truth.
 
-## Interpret The Request
+## Normalize The Request
 
-Normalize even typo-heavy wording into:
+Freeze this contract before source work:
 
-`entities + discovery scope + output filter + time window + classifications + exclusions + permitted mutations + required proof`
+`entities + discovery scope + output scope + time window + exclusions + authority + proof target`
 
-Keep three dimensions separate:
+Keep discovery scope, output filtering, and mutation authority independent. `All` expands discovery and requires an honest global coverage verdict. `Action only` changes the rendered rows, not source discovery. A continuation or correction reopens prior conclusions; prior summaries remain leads until current primary evidence confirms them.
 
-1. **Discovery scope** — where and how broadly to search.
-2. **Output scope** — which verified results to show.
-3. **Action authority** — what may be drafted, sent, changed, or submitted.
+## Select Authority
 
-Interpret recurring phrases precisely:
+- `audit`: read and classify only;
+- `organize`: mutate only explicitly requested internal CRM/task/view objects;
+- `draft`: create or update drafts or prepared answers; do not transmit;
+- `send`: transmit only after the live-send gate;
+- `execute`: perform only the named mutation classes and verify each at its target layer.
 
-- `all`, `every`, `massive`, `do not filter out`: discover globally and check the latest state per entity;
-- `new`, `last N days`, `only recent`: enforce the exact cutoff after broad-enough discovery;
-- `only action`: show only items with a concrete action due now; do not hide an overdue follow-up merely because the other party still owes the reply;
-- `continue`, `again`, `reanalyze`, `previous`: reopen prior conclusions and recover the closest owner task;
-- `draft`: create drafts only;
-- `send`, `reply`, `fire it`: prepare the exact final action and apply the live-send gate;
-- `complete`, `execute`, `take action`: perform every safe step only within the mutation classes explicitly authorized by the request; naming or reading a source never grants write authority.
-- heavy typos: decode operational intent from the surrounding task, preserve explicit constraints, and act on the normalized request rather than mirroring the wording;
-- ALL CAPS: treat as emphasis or urgency, not praise or excitement;
-- `critique`, `many missing`, `wrong`, `again`: inspect the existing result, repair the validated defects, sweep the same failure class, and re-run proof instead of returning options or a fresh summary.
+In `audit`, new authentication and connection setup are mutations. Do not initiate interactive login/reauthentication, create OAuth links, run connection-ensure/create commands, create browser profiles, pair devices, create/update drafts, send, book, submit, or write. Existing configured authentication may open a read-only transport when it does not change account state.
 
-Do not let a later short request erase durable constraints from the same task unless the user explicitly reverses them.
+## Select One Audit Recipe
 
-## Select The Authorized Mode
+- `coverage`: prove which identities, routes, bounds, pages, totals, and gaps were covered.
+- `entity-status`: discover broadly, pivot every identity, hydrate timelines, and determine the latest supported state.
+- `attention`: hydrate objective-relevant candidates, deduplicate and rank actions due now; candidate-only discovery remains `sampled` or `partial`.
+- `delivery`: bind each outbound action to draft, Sent/chat/provider ID, failure, delivery, and reply evidence.
+- `recovery`: recover missing scope or prior authority from tasks/history; never use history as proof of current external truth.
 
-- `audit`: read and classify; no mutations;
-- `organize`: update requested internal CRM/task/label/view objects after read-back; no external communication;
-- `draft`: create drafts or prepare form answers; nothing is sent or submitted;
-- `send`: transmit only after recipient, sender identity, subject, body, attachments, thread, and confirmation pass the send gate;
-- `execute`: complete only the explicitly authorized mutation classes across communication, CRM, calendar, ATS, provider, or authenticated browser surfaces and verify each mutation externally.
+Load [Audit Recipes](references/audit-recipes.md) for the selected route.
 
-Never expand `audit` into mutation, treat a draft as sent, treat a filled form as submitted, or treat an API acknowledgement as the promised external outcome.
+## Source-Quality Ladder
 
-Source access and mutation authority are independent. Reading Gmail, Close, Pocket, GOWA, a calendar, or a form does not authorize sending, updating, booking, or submitting there.
+Prefer the source that owns the event, then its native connector/API, direct transport, and an already-authenticated browser. Use task/history sources only to recover missing context. A failed route is not an empty source.
 
-## Source Precedence
+Before declaring a source unavailable, inventory callable capabilities and try viable read-only alternatives. Read literal outputs, including identities, errors, counts, keys, ranges, timestamps, and bodies.
 
-When sources conflict, use:
+## Adapter Contract
 
-1. latest user wording in the current task;
-2. current primary communication or provider surface;
-3. fresh mailbox, CRM, transcript, WhatsApp, calendar, ATS, browser, or database evidence;
-4. verified project-local operating positions;
-5. user-provided source documents;
-6. Codex tasks, Notion instructions, Chronicle, Screenpipe, and session histories;
-7. prior summaries, dashboards, CRM labels, reports, and agent claims.
+Every in-scope source row must record:
 
-Compare the real event time, not merely import, synchronization, indexing, or observation time. A CRM activity synced today may represent an email sent last week.
+| Identity | Route | Bounds/order | Cursor or range | Declared / returned / deduped | Hydration | Coverage | Failure origin | Proof remaining |
+|---|---|---|---|---|---|---|---|---|
 
-## Core Workflow
+Coverage is exactly one of `full`, `partial`, `sampled`, `missing`, or `blocked`. Failure origin is `skill`, `provider/source`, `route/environment`, or `unresolved`.
 
-### 1. Recover Context
+An adapter must enumerate identities; express the query/window; force chronological order; exhaust cursors or prove a finite cursorless result; expose stable IDs and totals; hydrate decisive records; state limitations; and, only when authorized, mutate and read back the target.
 
-For continuation, correction, referenced-task, or prior-failure work:
+Load only the adapters in scope:
 
-1. Use Codex task tools first. When installed, use `codex-internal-tools-threads-plans-goals-skill` for routing; otherwise use the available task/thread/goal capabilities directly.
-2. Read selected messages sequentially when complete or line-by-line analysis is requested.
-3. Record counts, coverage, promises, proven mutations, corrections, exclusions, and suspicious completion claims.
-4. When installed, use `conversation-history-recovery-skill` only when the Codex task is insufficient or cross-source reconstruction is explicitly required; otherwise recover through the available primary conversation/history sources and record the missing capability.
-5. Treat Notion, Chronicle, Screenpipe, memory, and histories as evidence or reusable guidance, never as authority over the current request.
+- [Email](references/adapters/email.md)
+- [CRM](references/adapters/crm.md)
+- [Meetings](references/adapters/meetings.md)
+- [WhatsApp](references/adapters/whatsapp.md)
+- [Forms And Providers](references/adapters/forms.md)
 
-### 2. Build The Coverage Ledger
+## Core Loop
 
-Before conclusions, maintain:
+1. Freeze the request, timezone, half-open `[local_start, local_end)` bounds, independently converted UTC bounds, identities, exclusions, authority, and recipe.
+2. Select adapters and inventory current identities/routes before filtering relevance.
+3. Discover both directions and relevant archive, sent, draft, media, calendar, provider, and status lanes. Pivot organization, domain, contact, address/JID, role, subject, requisition, event, and stable IDs.
+4. Force chronological order, exhaust or reconcile every page/range, deduplicate stable IDs, and post-filter real event timestamps. Re-run pivots discovered later.
+5. Hydrate complete decisive records and canonicalize with [Core Evidence Model](references/core-evidence-model.md). Load [Opportunity Overlay](references/overlays/opportunity.md) only for career, sales, deal, contract, or work-offer classification.
+6. Immediately before an authorized mutation, reread the newest state, resolve the exact target, execute once, and verify at the promised layer using [Mutation And Idempotency](references/mutation-idempotency.md).
 
-| Source identity | Route | Exact scope/window | Inbound | Outbound | Archive/drafts | Attachments/media | Pages/results/totals | Coverage |
-|---|---|---|---:|---:|---:|---:|---:|---|
+## Stop Predicate
 
-Use only `full`, `partial`, `sampled`, `missing`, or `blocked`. One label, account, alias, result page, device, date slice, semantic hit, or convenience view is never global coverage.
+Stop only when each required source has either reconciled identity, bounds, order, range/cursor, IDs/totals, and hydration or a named gap with failure origin and next proof; every discovered entity has a latest verified event; and the promised proof layer is reached.
 
-Record the exact mailbox address, workspace, account, profile, and device returned by the source. If a connector exposes only one identity and cannot enumerate others, that identity may be full while requested multi-account coverage remains partial.
+If any required global source or proof layer remains incomplete, return `CHECKPOINT`, not `all`, `complete`, or an upgraded outcome. A union of partial slices is not automatically full.
 
-Discover or lazy-load relevant connectors before calling a source unavailable. If a connector fails authentication, caps, truncates, samples, sorts by relevance, omits a cursor, or disagrees with its declared total, record the exact limitation and continue through the viable native/API, direct-transport, and authenticated-browser routes. A failed route is blocked; the source is not necessarily blocked.
+## Output
 
-Load [Channel Runbooks](references/channel-runbooks.md) for the sources in scope.
+Lead with the direct answer. Then provide generic source coverage and entity rows:
 
-### 3. Discover Broadly, Then Pivot
-
-1. Start with the strongest native source.
-2. Include both directions and the relevant archive, sent, draft, attachment, media, calendar, and provider states.
-3. Build pivots from organization, domain, contact, address, phone/JID, role, subject root, ATS/requisition ID, calendar title, and aliases.
-4. Search each pivot without a direction filter, then verify inbound and outbound explicitly.
-5. Define the requested window as half-open `[local_start, local_end)` in an explicit IANA timezone. Convert both endpoints independently to UTC with current DST rules, use a source query that safely contains the window, then post-filter by real event timestamps; boundary dates alone are not exact proof.
-6. Force chronological ordering when a UI defaults to relevance. Paginate until the cursor is absent or the final range is reached, deduplicate stable IDs, and reconcile returned counts against declared totals.
-7. Re-run pivots discovered later.
-8. Stop only after every discovered entity has a latest-state check and every gap is explicit.
-
-### 4. Construct Canonical Timelines
-
-Keep distinct roles, applications, assignments, deals, and decisions separate even when they share one organization or contact. Deduplicate only when evidence proves identity.
-
-For every event retain:
-
-- `occurred_at` and timezone;
-- `occurred_interval` when a recording or capture spans more than one interaction;
-- `observed_at` or sync time when different;
-- channel and direction;
-- sender, recipient, and source identity;
-- stable thread/message/activity/form/provider identifier;
-- match provenance: source-native title/participant/ID/interval versus semantic text, OCR, prompt, or summary;
-- exact decisive evidence;
-- requested or completed action;
-- proof state and whether it changes the prior state.
-
-Load [State And Action Model](references/state-and-action-model.md) for canonicalization, offer/acceptance gates, ball-in-court, follow-up-due logic, and action-only selection.
-
-### 5. Re-Read Immediately Before Mutation
-
-Before drafting, sending, submitting, booking, or updating:
-
-1. Re-read the newest state in every relevant channel.
-2. Confirm no newer reply, cancellation, send, draft, task, or provider state makes the action stale or duplicate.
-3. Resolve exact sender identity, recipient, thread, attachments, target object, and form.
-4. Execute once from the strongest working route.
-5. If the result is ambiguous, inspect the target system before retrying; never repeat a real action blindly.
-
-Load [Execution Safety And Idempotency](references/execution-safety.md) before any mutation.
-
-### 6. Verify At The Promised Layer
-
-Read every output literally. Record the keys, text, IDs, timestamps, and direction that drive each conclusion.
-
-- Search result is not a complete thread.
-- Draft is not sent.
-- SMTP/API handoff is not delivery.
-- Empty immediate bounce search is not permanent delivery.
-- Invitation is not attendance.
-- Filled form is not submission.
-- Submission is not provider acceptance.
-- CRM status is not external outcome.
-- Offer is not acceptance; acceptance is not start.
-
-Use `CHECKPOINT` when a required global source or promised layer remains partial. Name the exact missing proof and next probe.
-
-## No-Invention Gate
-
-Never invent or infer salary, rate, availability, work authorization, sponsorship, notice period, residence, phone, experience years, role preference, demographics, references, interview slots, acceptance, or attachment completion.
-
-Use verified current user wording, current profile/CV data, exact thread facts, or live form/provider values. If a consequential fact remains externally undiscoverable, block only that action and continue independent safe work.
-
-## Output Contract
-
-Lead with the direct answer. For an opportunity audit, distinguish:
-
-- user accepted, mutual acceptance confirmed, hired/contracted, onboarding, or started;
-- concrete offer pending acceptance or terms;
-- conditional commitment or onboarding check;
-- interview/assessment/next stage;
-- positive interest without offer;
-- pending on the user;
-- waiting on them, not yet due;
-- follow-up due now;
-- rejected/closed;
-- unclear because of named proof debt.
-
-Then provide:
-
-| Entity | Opportunity | Latest state | Decisive evidence | Event date | Ball-in-court | Action due | Next action |
+| Entity | Latest event/state | Proof layer | Response owner | Next-action owner | Action due | Next action | Coverage debt |
 |---|---|---|---|---|---|---|---|
 
-Finish with coverage, latest-event corrections, excluded categories, executed mutations with read-back proof, ambiguous results resolved, and a flat unresolved inventory.
+Keep drafts, sends, handoff, delivery, replies, invitations, attendance, forms, provider decisions, offers, acceptance, contracting, onboarding, and start separate. Finish with corrections to stale state, executed mutations and read-back proof, unresolved proof count, failure origins, and exact next probes.
 
-For an attention view, render only the sections supported by the request and evidence:
-
-1. `Needs Reply` — human threads with user-owned action, ranked after deduplication;
-2. `Stale Drafts` — age, warm/cold lane, and send/update/kill disposition;
-3. `Open Loops` — user-owned non-reply actions and follow-ups due now;
-4. `Critical Signals` — objective-relevant failures, declines, deadlines, or missing expected machine mail, grouped by incident.
-
-Use plain business vocabulary. Do not bury the action ledger in decorative classifier names, walls of prose, fake terminal language, or broken-source cards.
-
-For conversation critique or recovery artifacts, load [Recovery And Acceptance Tests](references/recovery-and-acceptance-tests.md).
-
-## Completion Gate
-
-Before closure, prove:
-
-- discovery scope, output filter, and action authority remained separate;
-- every requested source has an honest coverage label;
-- global searches were paginated and checked both directions;
-- source identity, chronological sort mode, exact absolute bounds, cursor exhaustion, stable-ID deduplication, and declared-total reconciliation were recorded;
-- event time was separated from sync/observation time;
-- long recordings were partitioned into entity-bound intervals and semantic/OCR hits were not treated as entity proof;
-- every entity has a canonical latest-state record;
-- separate opportunities were not merged by employer or domain alone;
-- follow-up-due items were not hidden as merely waiting;
-- successful confirmations were not promoted into action while matched failures, declines, deadlines, and missing expected mail remained visible;
-- stale drafts were aged and split into warm versus cold lanes before ranking;
-- ranking used current user priorities, objective impact, deadline proximity, and human/system evidence rather than urgency-sounding language alone;
-- drafts, sends, delivery, replies, forms, offers, acceptance, and start remain separate;
-- duplicate drafts/actions and ambiguous retries were prevented;
-- attachments and sender/recipient/thread identity were read back;
-- delayed-bounce or later-provider checks are scheduled or explicitly pending when relevant;
-- no consequential user fact was invented;
-- every mutation has same-layer proof;
-- any promised CRM attention surface was verified as a focused rendered action view, not merely an accurate full backlog;
-- unresolved proof debt is counted and paired with the next exact probe.
-
-If any required item remains false, close as `CHECKPOINT`, not completion.
+Do not fabricate consequential facts. Use current user wording or primary-source values and block only the affected action. Never embed or persist reusable secret values in package files, examples, logs, reports, or persistent memory; resolve them at runtime and use `[REDACTED_SECRET]` when representation is unavoidable.
 
 ## Package Validation
 
@@ -224,4 +99,4 @@ After changing this skill, run:
 node scripts/validate-package.mjs
 ```
 
-Publish only after structural validation, acceptance-scenario review, installed-copy equality, and local/remote equality pass.
+Publish only after fixtures, installed/source equality, [Live Acceptance](tests/live-acceptance.md), and local/remote equality pass.
