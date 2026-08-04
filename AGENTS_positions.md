@@ -1,10 +1,22 @@
 # INDEX
 
+career application pipelines | summaries, CRM labels, verification emails and outbound clicks can be mistaken for confirmed progress | reconcile native confirmations, raw requisition IDs, tracker cohort membership and newest thread direction | do not inherit counts, duplicate follow-ups or promote verification gates to submissions | replay ATS code, cohort recount, wrong-CV correction and latest-direction fixtures
 live adapter execution | prose rules detect gaps but do not select or recover routes deterministically | select one audit recipe, enforce adapter contracts, and stop only on reconciliation or named proof debt | do not infer source absence from route failure or combine partial slices into full | run v3 route fixtures plus live email Close GOWA browser and meeting probes
 attention quality | technically complete source recovery still surfaces wrong actions | apply success/failure asymmetry, stale warm/cold draft policy, current-priority ranking, missing-mail checks, and focused CRM views | do not equate accurate inventory with useful attention output | replay action-ranking and CRM-view fixtures
 source completeness | connector success or list metadata treated as full truth | bind identity, bounds, sort, cursors, totals, and hydrated event IDs | do not infer all from relevance, one account/device, or declared totals | replay real pagination and boundary fixtures
 proof and authority | transport/no-bounce or acceptance collapsed into higher outcomes | keep delivery, acceptance, hire, onboarding, and start separate; require final send confirmation | do not let source access grant mutation authority | run package invariants and acceptance scenarios
 inbox/action recovery | output filters replaced full discovery | recover globally, filter presentation last | do not infer completeness from recent or human-only results | require source ledger and latest-state proof
+
+## 2026-08-04 — CURRENT — Career pipelines require native confirmation, cohort and direction reconciliation
+
+- Project: `inbox-forensic-action-operator-skill`; surface: job applications, recruiter threads, CV corrections, meetings, tracker and CRM status.
+- Regression caught: prior summaries and lane labels could overstate quota progress; ATS verification mail could be promoted to submission; warm contacts could receive duplicate follow-ups; and a wrong CV could remain unrepaired or create duplicate CRM state.
+- Superior route: reconcile raw job/requisition IDs and literal receipts into the requested cohort, bind the selected CV/contact read-back, determine latest-message direction, and correct a mismatched document once in the existing thread.
+- Evidence: 4 Aug 2026 Arize split-code Greenhouse flow, tracker-wide recount, Freedom Consulting direction check, Duvo meeting reconciliation and Zooplus same-thread CV repair.
+- Trigger terms: `30 more`, `submitted`, `verification code`, `wrong CV`, `follow up all`, `meeting`, `tracker`, `warm opportunity`.
+- Do: preserve each proof layer, application identity and historical correction event.
+- Don't: count clicks/emails, inherit summary totals, send when newest message is outbound, or duplicate an opportunity.
+- Verify before reuse: exact ATS receipt, full-width tracker parse, canonical cohort membership, Sent/thread attachment read-back and current calendar/CRM state.
 
 ## 2026-08-04 — CURRENT — Live adapters require deterministic route and stop contracts
 

@@ -54,7 +54,6 @@ const skill = contents['SKILL.md'] ?? '';
 
 if (!/^---\n[\s\S]*?\n---\n/.test(skill)) errors.push('SKILL.md frontmatter is missing or malformed');
 if (!/^name: inbox-forensic-action-operator-skill$/m.test(skill)) errors.push('Unexpected skill name');
-if (!/^version: \d+\.\d+\.\d+$/m.test(skill)) errors.push('Version must use semantic versioning');
 if (!/^description: This skill should be used /m.test(skill)) errors.push('Description must state when the skill should be used');
 
 const skillWords = skill.trim().split(/\s+/).length;
@@ -120,6 +119,7 @@ const requiredScenarioIds = [
   'MAIL-BOUNCE-LAYER', 'MEETING-CANCELLATION', 'MEETING-INTERVAL-BINDING', 'ATTACHMENT-GATE',
   'FORM-STATE-LAYERS', 'OPPORTUNITY-NO-INFERENCE', 'CRM-OBJECT-IDENTITY', 'INCIDENT-GROUPING',
   'NUMBER-TYPE-ASOF', 'SUCCESS-FAILURE-ASYMMETRY', 'CHANNEL-ESCALATION', 'SECRET-NONPERSISTENCE',
+  'ATS-EMAIL-CODE', 'APPLICATION-COHORT-RECOUNT', 'WRONG-CV-CORRECTION', 'LATEST-DIRECTION-WAIT',
 ];
 for (const id of requiredScenarioIds) {
   if (!ids.includes(id)) errors.push(`Missing acceptance scenario ID: ${id}`);

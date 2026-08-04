@@ -18,6 +18,8 @@ Search the current thread/entity for existing drafts before creating another. A 
 
 Before transmission, verify every required attachment exists, is the intended current version, opens, matches its filename/type, and is actually attached. Do not claim an absent attachment.
 
+For recruiter or application-document corrections, first read the whole thread and identify the exact file previously sent. Send a corrected document only when the mismatch is real and the user authorized follow-through. Keep the correction in the existing thread, name the role-relevant file clearly, verify the exact attachment after send, and do not add another follow-up when the newest message is already outbound.
+
 ## Live Send Gate
 
 1. Reread the newest thread/chat and existing drafts.
@@ -36,6 +38,8 @@ If a mutation times out or returns an ambiguous response, do not retry immediate
 Before submit/book/update, reopen the live target and verify identity, current state, required fields, dates/timezone, and validation errors. Inspect the final review page/state and never bypass the target's final confirmation affordance. Execute only under explicitly authorized mutation scope. If the current request does not specify the exact target and consequential values, show the exact final review and require immediate confirmation before the mutation.
 
 After action, preserve literal confirmation text, timestamp, stable ID, and resulting state. An API acknowledgement is not a user-visible/provider outcome.
+
+For quota goals, append the result to the canonical tracker only after literal confirmation. Store the raw requisition/job ID, canonical URL, selected filename, contact read-back, required factual answers, confirmation text, timestamp, proof type, and blocker when any. Re-parse the whole tracker after each write and reject malformed-width rows. Recompute the requested cohort from tracker evidence; never carry forward a summary count without reconciling its exact membership.
 
 ## Delivery Follow-Through
 
