@@ -32,6 +32,7 @@ Keep distinct roles, assignments, applications, and deals separate even when the
 
 ## Career Pipeline Reconciliation
 
+- Treat LinkedIn data exports as dated snapshot evidence. Inventory every numbered partition, parse logical CSV records, preserve source row provenance, and sort conversation events by parsed time. An export application row is `export_application_snapshot`, not current receipt, reply, interview, offer, acceptance, or hire; saved jobs and saved answers are weaker, distinct evidence types.
 - Bind each application to raw platform job ID or requisition ID, canonical URL, employer, title, submission timestamp, selected CV, contact details, and literal confirmation. Similar titles or employer names do not deduplicate different requisitions; location mirrors and same-title reposts require an explicit identity decision.
 - Treat tracker rows, CRM opportunities, recruiter threads, calendar events, and ATS records as separate evidence layers. Repair stale internal status only after the source-native latest event is read.
 - Determine current-message direction before follow-up. Latest inbound plus an unresolved request may justify one tailored response; latest outbound normally means wait unless an explicit deadline has passed. Never send a generic follow-up merely because an application exists.

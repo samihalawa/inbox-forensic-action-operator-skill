@@ -10,7 +10,8 @@ Run these read-only probes from the globally installed skill after structural fi
 6. **Meeting:** read one invitation, cancellation, self-report, or provider occurrence. Keep scheduled, cancelled, user-reported completed, and provider-confirmed completed distinct.
 7. **Provider alert:** bind one alert to live provider state when reachable. Alert mail alone must not promote outcome or remediation.
 8. **Mutation guards:** verify audit creates nothing. In a controlled non-transmitting review, confirm draft remains draft, live send retains final preview/immediate confirmation, external submit/book/update retains its final confirmation affordance, and ambiguous results require target reread before retry.
-9. **Output:** every source row includes coverage, failure origin, and proof remaining; every entity row includes latest event, proof layer, response owner, next-action owner, and action.
+9. **LinkedIn export:** on one dated export, inventory every relevant semantic file family and numbered partition; parse logical CSV records; validate widths; reconcile per-file/union/deduplicated counts; rebuild one bidirectional conversation chronologically; and keep application, saved-job, saved-answer, invitation, connection, marketplace, and current-live proof types separate.
+10. **Output:** every source row includes coverage, failure origin, and proof remaining; every entity row includes latest event, proof layer, response owner, next-action owner, and action.
 
 ## Equality And Release Proof
 

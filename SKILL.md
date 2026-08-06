@@ -1,6 +1,6 @@
 ---
 name: inbox-forensic-action-operator-skill
-description: This skill should be used to audit or act on email, CRM, meeting, WhatsApp, calendar, ATS, provider, and browser-action timelines when completeness, latest state, delivery, opportunity status, or safe follow-through matters.
+description: This skill should be used to audit or act on email, CRM, meeting, WhatsApp, calendar, ATS, LinkedIn export, provider, and browser-action timelines when completeness, latest state, delivery, opportunity status, or safe follow-through matters.
 ---
 
 # Inbox Forensic Action Operator
@@ -63,6 +63,7 @@ Load only the adapters in scope:
 - [Meetings](references/adapters/meetings.md)
 - [WhatsApp](references/adapters/whatsapp.md)
 - [Forms And Providers](references/adapters/forms.md)
+- [LinkedIn Export](references/adapters/linkedin-export.md)
 
 ## Core Loop
 
@@ -70,7 +71,7 @@ Load only the adapters in scope:
 2. Select adapters and inventory current identities/routes before filtering relevance.
 3. Discover both directions and relevant archive, sent, draft, media, calendar, provider, and status lanes. Pivot organization, domain, contact, address/JID, role, subject, requisition, event, and stable IDs.
 4. Force chronological order, exhaust or reconcile every page/range, deduplicate stable IDs, and post-filter real event timestamps. Re-run pivots discovered later.
-5. Hydrate complete decisive records and canonicalize with [Core Evidence Model](references/core-evidence-model.md). Load [Opportunity Overlay](references/overlays/opportunity.md) for career, application, recruiter, meeting, sales, deal, contract, or work-offer classification. For job pipelines, reconcile the canonical application tracker against native ATS/LinkedIn/Gmail evidence before trusting cohort totals or prior status labels.
+5. Hydrate complete decisive records and canonicalize with [Core Evidence Model](references/core-evidence-model.md). Load [Opportunity Overlay](references/overlays/opportunity.md) for career, application, recruiter, meeting, sales, deal, contract, or work-offer classification. For job pipelines, reconcile the canonical application tracker and every discovered LinkedIn-export partition against native ATS/LinkedIn/Gmail evidence before trusting cohort totals, saved answers, latest direction, or prior status labels.
 6. Immediately before an authorized mutation, reread the newest state, resolve the exact target, execute once, and verify at the promised layer using [Mutation And Idempotency](references/mutation-idempotency.md).
 
 ## Stop Predicate

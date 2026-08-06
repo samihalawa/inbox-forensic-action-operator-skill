@@ -17,6 +17,7 @@ const requiredFiles = [
   'references/adapters/meetings.md',
   'references/adapters/whatsapp.md',
   'references/adapters/forms.md',
+  'references/adapters/linkedin-export.md',
   'tests/acceptance-scenarios.md',
   'tests/live-acceptance.md',
 ];
@@ -51,10 +52,15 @@ const publicTextFiles = walk(root).filter((path) => textExtensions.has(extname(p
 const relativeName = (path) => path.slice(root.length + 1);
 const contents = Object.fromEntries(publicTextFiles.map((path) => [relativeName(path), readFileSync(path, 'utf8')]));
 const skill = contents['SKILL.md'] ?? '';
+const linkedinExportAdapter = contents['references/adapters/linkedin-export.md'] ?? '';
 
 if (!/^---\n[\s\S]*?\n---\n/.test(skill)) errors.push('SKILL.md frontmatter is missing or malformed');
 if (!/^name: inbox-forensic-action-operator-skill$/m.test(skill)) errors.push('Unexpected skill name');
 if (!/^description: This skill should be used /m.test(skill)) errors.push('Description must state when the skill should be used');
+for (const phrase of [
+  'numbered partitions', 'RFC 4180-aware CSV reader', 'logical records',
+  'export_application_snapshot', 'both inbound and outbound', 'current native sources',
+]) if (!linkedinExportAdapter.includes(phrase)) errors.push(`LinkedIn export adapter missing invariant: ${phrase}`);
 
 const skillWords = skill.trim().split(/\s+/).length;
 if (skillWords > 1200) errors.push(`SKILL.md exceeds 1200 words: ${skillWords}`);
@@ -120,6 +126,8 @@ const requiredScenarioIds = [
   'FORM-STATE-LAYERS', 'OPPORTUNITY-NO-INFERENCE', 'CRM-OBJECT-IDENTITY', 'INCIDENT-GROUPING',
   'NUMBER-TYPE-ASOF', 'SUCCESS-FAILURE-ASYMMETRY', 'CHANNEL-ESCALATION', 'SECRET-NONPERSISTENCE',
   'ATS-EMAIL-CODE', 'APPLICATION-COHORT-RECOUNT', 'WRONG-CV-CORRECTION', 'LATEST-DIRECTION-WAIT',
+  'LINKEDIN-EXPORT-PARTITIONS', 'LINKEDIN-EXPORT-CSV-ROWS', 'LINKEDIN-EXPORT-DIRECTION',
+  'LINKEDIN-EXPORT-PROOF', 'LINKEDIN-EXPORT-PREAMBLE',
 ];
 for (const id of requiredScenarioIds) {
   if (!ids.includes(id)) errors.push(`Missing acceptance scenario ID: ${id}`);

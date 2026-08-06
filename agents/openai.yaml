@@ -1,4 +1,4 @@
 interface:
   display_name: "Inbox Forensic Action Operator"
-  short_description: "Audit cross-channel truth, then act with verified proof"
-  default_prompt: "Use $inbox-forensic-action-operator-skill to select the authorized audit or action recipe, load only in-scope adapters, keep proof layers distinct, and verify any authorized mutation at its target layer."
+  short_description: "Audit cross-channel and export truth before action"
+  default_prompt: "Use $inbox-forensic-action-operator-skill to select the authorized recipe, reconcile in-scope live sources and LinkedIn-export partitions, keep proof layers distinct, and verify any authorized mutation at its target layer."

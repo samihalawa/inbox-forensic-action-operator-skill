@@ -1,11 +1,23 @@
 # INDEX
 
+LinkedIn export evidence | partitioned CSVs, multiline cells, preambles and unsorted bidirectional messages can create plausible incomplete timelines | inventory all file families, parse logical rows and reconcile snapshots with live sources | do not trust one file, line counts, folder/order direction or snapshot outcomes | replay five LinkedIn-export fixtures and current-source override
 career application pipelines | summaries, CRM labels, verification emails and outbound clicks can be mistaken for confirmed progress | reconcile native confirmations, raw requisition IDs, tracker cohort membership and newest thread direction | do not inherit counts, duplicate follow-ups or promote verification gates to submissions | replay ATS code, cohort recount, wrong-CV correction and latest-direction fixtures
 live adapter execution | prose rules detect gaps but do not select or recover routes deterministically | select one audit recipe, enforce adapter contracts, and stop only on reconciliation or named proof debt | do not infer source absence from route failure or combine partial slices into full | run v3 route fixtures plus live email Close GOWA browser and meeting probes
 attention quality | technically complete source recovery still surfaces wrong actions | apply success/failure asymmetry, stale warm/cold draft policy, current-priority ranking, missing-mail checks, and focused CRM views | do not equate accurate inventory with useful attention output | replay action-ranking and CRM-view fixtures
 source completeness | connector success or list metadata treated as full truth | bind identity, bounds, sort, cursors, totals, and hydrated event IDs | do not infer all from relevance, one account/device, or declared totals | replay real pagination and boundary fixtures
 proof and authority | transport/no-bounce or acceptance collapsed into higher outcomes | keep delivery, acceptance, hire, onboarding, and start separate; require final send confirmation | do not let source access grant mutation authority | run package invariants and acceptance scenarios
 inbox/action recovery | output filters replaced full discovery | recover globally, filter presentation last | do not infer completeness from recent or human-only results | require source ledger and latest-state proof
+
+## 2026-08-06 — CURRENT — LinkedIn exports require partition and logical-record reconciliation
+
+- Project: `inbox-forensic-action-operator-skill`; surface: LinkedIn application, message, connection, saved-answer and Services Marketplace exports.
+- Regression caught: one unsuffixed CSV, physical line counts, first-row header assumptions, or file/folder ordering can undercount events and reverse the latest-message direction.
+- Superior route: inventory every semantic family/numbered partition, observe headers, parse logical CSV records, validate widths, preserve source rows, sort timestamps and reconcile snapshots with current native evidence.
+- Evidence: a current export split applications across three numbered partitions; multiline message cells broke physical-line counts, conversations mixed both directions and ordering, and Connections used a notes preamble.
+- Trigger terms: `LinkedIn export`, `messages.csv`, `Job Applications_1`, `all applications`, `screening answers`, `latest reply`.
+- Do: keep `export_application_snapshot`, saved, preference, message, invitation and marketplace proof types separate.
+- Don't: promote snapshot/application/saved-answer rows into live receipt, reply, offer, acceptance, hire, current fact, or send authority.
+- Verify before reuse: all partitions inventoried, logical row widths valid, conversation chronology rebuilt, and newer live evidence checked.
 
 ## 2026-08-04 — CURRENT — Career pipelines require native confirmation, cohort and direction reconciliation
 
