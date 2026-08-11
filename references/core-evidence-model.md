@@ -16,6 +16,26 @@ For every event retain:
 
 Chronology uses entity-bound event time. Observation time explains late discovery and never rewrites the event.
 
+## Assertion Fingerprint And Revision
+
+Every consequential current-state, value, ranking, or action assertion binds:
+
+`actor/counterparty + organization + opportunity/asset/requisition/case + channel + native ID + event time + source + proof layer`
+
+Do not merge records solely because they share an organization, domain, contact, sender, role title, property description, subject fragment, or CRM lead. Keep distinct applications, requisitions, assets, listings, referrals, and commercial motions separate until an explicit identity link exists.
+
+Classify a conclusion as one of:
+
+- `historical_observation` — a past event is proven, but current state is not;
+- `current_state` — the newest relevant primary evidence supports it;
+- `current_unknown` — old or conflicting evidence exists and the decisive current source has not been read.
+
+If a later event reverses an asserted state, record the original assertion, reversal source/ID/time, and affected outputs. Withdraw and recompute all dependent entity rows, counts, value labels, rankings, and recommendations before action. A correction appended beside an unchanged dashboard is not a reconciliation.
+
+## Numeric Provenance
+
+Attach source, as-of time, and one label to any material amount: `asking`, `application amount`, `estimate`, `proposal`, `offer`, `contracted`, or `settled`. Do not rank, sum, or compare unlike labels as though they were realized value.
+
 ## Proof Ladders
 
 Keep communication states separate:

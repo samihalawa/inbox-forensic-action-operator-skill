@@ -74,6 +74,10 @@ Load only the adapters in scope:
 5. Hydrate complete decisive records and canonicalize with [Core Evidence Model](references/core-evidence-model.md). Load [Opportunity Overlay](references/overlays/opportunity.md) for career, application, recruiter, meeting, sales, deal, contract, or work-offer classification. For job pipelines, reconcile the canonical application tracker and every discovered LinkedIn-export partition against native ATS/LinkedIn/Gmail evidence before trusting cohort totals, saved answers, latest direction, or prior status labels.
 6. Immediately before an authorized mutation, reread the newest state, resolve the exact target, execute once, and verify at the promised layer using [Mutation And Idempotency](references/mutation-idempotency.md).
 
+## Reversal Sweep Before Action
+
+Bind each consequential status, value, ranking, and recommended action to the canonical entity and evidence timestamp defined in the Core Evidence Model. If newer primary evidence reverses any input, withdraw the affected state and recompute every dependent count, value label, recipient rank, and downstream recommendation before another mutation. Do not leave a correction as an addendum to an operative stale dashboard.
+
 ## Stop Predicate
 
 Stop only when each required source has either reconciled identity, bounds, order, range/cursor, IDs/totals, and hydration or a named gap with failure origin and next proof; every discovered entity has a latest verified event; and the promised proof layer is reached.
