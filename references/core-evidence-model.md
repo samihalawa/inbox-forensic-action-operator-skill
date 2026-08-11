@@ -16,6 +16,8 @@ For every event retain:
 
 Chronology uses entity-bound event time. Observation time explains late discovery and never rewrites the event.
 
+For every opportunity/case entity retain five independent temporal fields: `origin_at`, `latest_external_human_at`, `latest_external_system_at`, `latest_user_outbound_at`, and `latest_verified_state_at`. A recent user revival never rewrites the origin or makes old counterparty interest current.
+
 ## Assertion Fingerprint And Revision
 
 Every consequential current-state, value, ranking, or action assertion binds:
@@ -32,9 +34,11 @@ Classify a conclusion as one of:
 
 If a later event reverses an asserted state, record the original assertion, reversal source/ID/time, and affected outputs. Withdraw and recompute all dependent entity rows, counts, value labels, rankings, and recommendations before action. A correction appended beside an unchanged dashboard is not a reconciliation.
 
+When thread metadata, people, organizations, requisitions, assets, products, properties, or metrics disagree, set the affected entity to `ENTITY_CONFLICT`. Preserve every candidate identity and block only the affected commercial conclusion or mutation until primary evidence resolves the link.
+
 ## Numeric Provenance
 
-Attach source, as-of time, and one label to any material amount: `asking`, `application amount`, `estimate`, `proposal`, `offer`, `contracted`, or `settled`. Do not rank, sum, or compare unlike labels as though they were realized value.
+Attach source, as-of time, and one provenance label to any material amount: `verified transaction`, `counterparty-stated`, `recruiter-stated`, `CRM-recorded`, `asking`, `application amount`, `estimate`, `proposal`, `offer`, `contracted`, `settled`, or `unknown`. Do not rank, sum, or compare unlike labels as though they were realized value.
 
 ## Proof Ladders
 
@@ -51,6 +55,12 @@ Keep provider incidents separate:
 `notification observed -> provider alert observed -> provider state verified -> remediation verified -> user-visible outcome verified`
 
 Lower layers never prove higher layers. A payment, deployment, certificate, or security alert establishes `provider_alert_observed`, not current provider state or recovery.
+
+Word unrefreshed notifications as `latest verified notice at <timestamp> says ...`; never present a notice as current provider state without a newer provider read.
+
+## Contact Identity
+
+Attribute a phone number, address, JID, or account only after matching it to a verified signature, native contact record, CRM object, or primary thread. Repetition can raise urgency after identity is proven; an unresolved number remains unidentified and cannot inherit a person's opportunity state.
 
 ## Meeting Evidence
 

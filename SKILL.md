@@ -73,6 +73,7 @@ Load only the adapters in scope:
 4. Force chronological order, exhaust or reconcile every page/range, deduplicate stable IDs, and post-filter real event timestamps. Re-run pivots discovered later.
 5. Hydrate complete decisive records and canonicalize with [Core Evidence Model](references/core-evidence-model.md). Load [Opportunity Overlay](references/overlays/opportunity.md) for career, application, recruiter, meeting, sales, deal, contract, or work-offer classification. For job pipelines, reconcile the canonical application tracker and every discovered LinkedIn-export partition against native ATS/LinkedIn/Gmail evidence before trusting cohort totals, saved answers, latest direction, or prior status labels.
 6. Immediately before an authorized mutation, reread the newest state, resolve the exact target, execute once, and verify at the promised layer using [Mutation And Idempotency](references/mutation-idempotency.md).
+7. Immediately before final classification or output, run a delta sweep for new inbound and outbound messages, calls, scheduling changes, provider results, payments, and opportunity outcomes. Recompute every affected state, amount, count, rank, and recommendation.
 
 ## Reversal Sweep Before Action
 

@@ -125,6 +125,8 @@ const requiredScenarioIds = [
   'MAIL-BOUNCE-LAYER', 'MEETING-CANCELLATION', 'MEETING-INTERVAL-BINDING', 'ATTACHMENT-GATE',
   'FORM-STATE-LAYERS', 'OPPORTUNITY-NO-INFERENCE', 'CRM-OBJECT-IDENTITY', 'INCIDENT-GROUPING',
   'NUMBER-TYPE-ASOF', 'ASSERTION-REVISION', 'SUCCESS-FAILURE-ASYMMETRY', 'CHANNEL-ESCALATION', 'SECRET-NONPERSISTENCE',
+  'TEMPORAL-PROVENANCE-FIVE', 'ENTITY-CONFLICT', 'PHONE-IDENTITY', 'MONEY-PROVENANCE',
+  'PROVIDER-NOTICE-ASOF', 'FINAL-DELTA-SWEEP',
   'ATS-EMAIL-CODE', 'APPLICATION-COHORT-RECOUNT', 'WRONG-CV-CORRECTION', 'LATEST-DIRECTION-WAIT',
   'LINKEDIN-EXPORT-PARTITIONS', 'LINKEDIN-EXPORT-CSV-ROWS', 'LINKEDIN-EXPORT-DIRECTION',
   'LINKEDIN-EXPORT-PROOF', 'LINKEDIN-EXPORT-PREAMBLE',
@@ -157,6 +159,12 @@ const criticalExpectations = [
   ['MEETING-SELF-REPORT', 6, 'user_reported_completed'],
   ['PROVIDER-ALERT', 6, 'provider_alert_observed'],
   ['AUDIT-NO-MUTATION', 6, 'no mutation'],
+  ['TEMPORAL-PROVENANCE-FIVE', 6, 'historical opportunity with current outbound'],
+  ['ENTITY-CONFLICT', 6, 'ENTITY_CONFLICT'],
+  ['PHONE-IDENTITY', 6, 'unidentified caller'],
+  ['MONEY-PROVENANCE', 6, 'provenance-separated amounts'],
+  ['PROVIDER-NOTICE-ASOF', 6, 'latest verified notice at timestamp'],
+  ['FINAL-DELTA-SWEEP', 6, 'delta-reconciled output'],
 ];
 for (const [id, column, expected] of criticalExpectations) {
   if (scenarioById.get(id)?.[column] !== expected) errors.push(`${id} must preserve ${expected}`);
