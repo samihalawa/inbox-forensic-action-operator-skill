@@ -1,5 +1,6 @@
 # INDEX
 
+contact routing | native LinkedIn Contact info can expose a verified direct route, while domain guessing and partial mailbox reads cause wrong or duplicate outreach | inspect Contact info, exact-thread dedupe in Gmail, follow current routing, and delegate contact persistence to CardDAV | do not infer email from domain, send in audit, or treat a PUT as saved | replay Contact-info, Gmail, and CardDAV-readback fixtures
 LinkedIn export evidence | partitioned CSVs, multiline cells, preambles and unsorted bidirectional messages can create plausible incomplete timelines | inventory all file families, parse logical rows and reconcile snapshots with live sources | do not trust one file, line counts, folder/order direction or snapshot outcomes | replay five LinkedIn-export fixtures and current-source override
 career application pipelines | summaries, CRM labels, verification emails and outbound clicks can be mistaken for confirmed progress | reconcile native confirmations, raw requisition IDs, tracker cohort membership and newest thread direction | do not inherit counts, duplicate follow-ups or promote verification gates to submissions | replay ATS code, cohort recount, wrong-CV correction and latest-direction fixtures
 live adapter execution | prose rules detect gaps but do not select or recover routes deterministically | select one audit recipe, enforce adapter contracts, and stop only on reconciliation or named proof debt | do not infer source absence from route failure or combine partial slices into full | run v3 route fixtures plus live email Close GOWA browser and meeting probes
@@ -7,6 +8,16 @@ attention quality | technically complete source recovery still surfaces wrong ac
 source completeness | connector success or list metadata treated as full truth | bind identity, bounds, sort, cursors, totals, and hydrated event IDs | do not infer all from relevance, one account/device, or declared totals | replay real pagination and boundary fixtures
 proof and authority | transport/no-bounce or acceptance collapsed into higher outcomes | keep delivery, acceptance, hire, onboarding, and start separate; require final send confirmation | do not let source access grant mutation authority | run package invariants and acceptance scenarios
 inbox/action recovery | output filters replaced full discovery | recover globally, filter presentation last | do not infer completeness from recent or human-only results | require source ledger and latest-state proof
+
+## 2026-08-11 — CURRENT — LinkedIn Contact info and CardDAV are explicit routing and persistence boundaries
+
+- Project: `inbox-forensic-action-operator-skill`; surface: live LinkedIn profile Contact info, Gmail full-thread dedupe, and authorized iCloud contact maintenance.
+- Regression caught: export-only LinkedIn coverage can miss an observed direct address; guessed domain addresses or a partial mailbox view can create duplicate/wrong-channel outreach; CardDAV PUT success can be mistaken for persisted contact state.
+- Superior route: inspect native Contact info when available, bind the displayed address to the exact profile, deduplicate the complete Gmail thread, obey current channel preference, and delegate authorized persistence to the dedicated CardDAV workflow.
+- Trigger terms: `Contact info`, `LinkedIn email`, `direct email`, `save contact`, `AI JOBS`, `iCloud`, `CardDAV`.
+- Do: preserve native LinkedIn as the fallback channel; require fresh ETag, full-vCard preservation, and post-write REPORT for any CardDAV update.
+- Don't: infer email from a domain, send in audit, or claim a contact saved from PUT status alone.
+- Verify before reuse: Contact-info/Gmail-dedupe and CardDAV-readback acceptance fixtures.
 
 ## 2026-08-06 — CURRENT — LinkedIn exports require partition and logical-record reconciliation
 

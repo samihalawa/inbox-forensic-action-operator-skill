@@ -73,7 +73,9 @@ Load only the adapters in scope:
 4. Force chronological order, exhaust or reconcile every page/range, deduplicate stable IDs, and post-filter real event timestamps. Re-run pivots discovered later.
 5. Hydrate complete decisive records and canonicalize with [Core Evidence Model](references/core-evidence-model.md). Load [Opportunity Overlay](references/overlays/opportunity.md) for career, application, recruiter, meeting, sales, deal, contract, or work-offer classification. For job pipelines, reconcile the canonical application tracker and every discovered LinkedIn-export partition against native ATS/LinkedIn/Gmail evidence before trusting cohort totals, saved answers, latest direction, or prior status labels.
 6. Immediately before an authorized mutation, reread the newest state, resolve the exact target, execute once, and verify at the promised layer using [Mutation And Idempotency](references/mutation-idempotency.md).
-7. Immediately before final classification or output, run a delta sweep for new inbound and outbound messages, calls, scheduling changes, provider results, payments, and opportunity outcomes. Recompute every affected state, amount, count, rank, and recommendation.
+7. When an active LinkedIn profile is in scope, inspect native Contact info when available before selecting a follow-up channel. Treat a displayed email as a candidate identity, deduplicate the exact full Gmail thread, and never derive an address from the company domain. Use direct email only when verified and the current user routing requires it; otherwise retain native LinkedIn.
+8. When authorized contact maintenance is in scope, hand the verified identity to `$icloud-carddav-contact-manager`. That skill owns duplicate matching, fresh ETag, full-vCard preservation, write, and post-write REPORT readback. In `audit`, do not perform the handoff as a CardDAV write.
+9. Immediately before final classification or output, run a delta sweep for new inbound and outbound messages, calls, scheduling changes, provider results, payments, and opportunity outcomes. Recompute every affected state, amount, count, rank, and recommendation.
 
 ## Reversal Sweep Before Action
 
