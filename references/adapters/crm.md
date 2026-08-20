@@ -24,9 +24,10 @@ Also record `failure_origin` and `proof_remaining`. Browser control blocked does
 
 ## Record And Timeline Rules
 
-For Sami's current environment, use Twenty at
-`${TWENTY_CRM_URL:-https://crm.megawebs.com}` with `TWENTY_CRM_API_KEY`. Probe the
-live metadata and one representative response before relying on fields or filters.
+For Sami's current environment, use Twenty at `https://crm.megawebs.com`. Reuse the
+project's established `TWENTY_CRM_URL`/`TWENTY_CRM_API_KEY` or
+`TWENTY_BASE_URL`/`TWENTY_API_KEY` convention. Probe the live metadata and one
+representative response before relying on fields or filters.
 Paginate with `pageInfo.hasNextPage` and `pageInfo.endCursor`; never treat one page as
 complete.
 
