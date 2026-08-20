@@ -6,7 +6,7 @@ career application pipelines | summaries, CRM labels, verification emails and ou
 live adapter execution | prose rules detect gaps but do not select or recover routes deterministically | select one audit recipe, enforce adapter contracts, and stop only on reconciliation or named proof debt | do not infer source absence from route failure or combine partial slices into full | run v3 route fixtures plus live email Close GOWA browser and meeting probes
 attention quality | technically complete source recovery still surfaces wrong actions | apply success/failure asymmetry, stale warm/cold draft policy, current-priority ranking, missing-mail checks, and focused CRM views | do not equate accurate inventory with useful attention output | replay action-ranking and CRM-view fixtures
 source completeness | connector success or list metadata treated as full truth | bind identity, bounds, sort, cursors, totals, and hydrated event IDs | do not infer all from relevance, one account/device, or declared totals | replay real pagination and boundary fixtures
-proof and authority | transport/no-bounce or acceptance collapsed into higher outcomes | keep delivery, acceptance, hire, onboarding, and start separate; require final send confirmation | do not let source access grant mutation authority | run package invariants and acceptance scenarios
+proof and authority | transport/no-bounce or acceptance collapsed into higher outcomes | keep delivery, acceptance, hire, onboarding, and start separate; use final self-readback plus native send confirmation | do not let source access grant mutation authority or reopen authority already granted | run package invariants and acceptance scenarios
 inbox/action recovery | output filters replaced full discovery | recover globally, filter presentation last | do not infer completeness from recent or human-only results | require source ledger and latest-state proof
 
 ## 2026-08-11 — CURRENT — LinkedIn Contact info and CardDAV are explicit routing and persistence boundaries
@@ -78,7 +78,7 @@ inbox/action recovery | output filters replaced full discovery | recover globall
 
 - Project: `inbox-forensic-action-operator-skill`; surface: delivery/outcome states and external actions.
 - Regression caught: delivery inferred merely from no observed bounce, acceptance collapsed with hire, and a same-message send-confirmation bypass could overstate outcomes or weaken the real-send guard.
-- Superior route: use transport/no-bounce as lower proof, split mutual acceptance from hire/onboarding/start, and require the final preview plus explicit confirmation for every live send.
+- Superior route: use transport/no-bounce as lower proof, split mutual acceptance from hire/onboarding/start, internally review the final preview, and execute without reconfirmation when the current request authorizes the exact action or defined batch.
 - Evidence: independent critique of `247ce6a`; full 31-message report; current safety-affordance requirements.
 - Trigger terms: `sent`, `delivered`, `accepted`, `hired`, `execute`, `submit`, `send now`.
 - Do: treat source coverage, proof state, and authorized mutation classes as independent dimensions.

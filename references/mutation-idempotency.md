@@ -23,8 +23,8 @@ For recruiter or application-document corrections, first read the whole thread a
 ## Live Send Gate
 
 1. Reread the newest thread/chat and existing drafts.
-2. Show the exact final sender, recipients, subject, body, attachments, and thread.
-3. Require explicit immediate confirmation for the real transmission. Never bypass this preview-and-confirm step.
+2. Freeze and internally review the exact final sender, recipients, subject, body, attachments, and thread.
+3. When the current request authorizes the exact action or a defined batch containing it, transmit without asking again; that authority persists across items, forms, providers, and retries unless the user changes it. If target, payload, or mutation scope is genuinely absent, request only the missing fact at this boundary.
 4. Send exactly once.
 5. Read back Sent/thread or chat/provider message ID and current target.
 6. Search for immediate failure bound to the exact recipient, ID, and send window.
@@ -35,7 +35,7 @@ If a mutation times out or returns an ambiguous response, do not retry immediate
 
 ## Forms, CRM, Calendar, And Providers
 
-Before submit/book/update, reopen the live target and verify identity, current state, required fields, dates/timezone, and validation errors. Inspect the final review page/state and never bypass the target's final confirmation affordance. Execute only under explicitly authorized mutation scope. If the current request does not specify the exact target and consequential values, show the exact final review and require immediate confirmation before the mutation.
+Before submit/book/update, reopen the live target and verify identity, current state, required fields, dates/timezone, and validation errors. Inspect the final review page/state and never bypass the target's own final confirmation control. Execute when the current request authorizes the exact action or a defined batch containing it; do not reopen that authority for each item. If the target, consequential values, or mutation scope are genuinely absent, request only the missing fact before the affected mutation.
 
 After action, preserve literal confirmation text, timestamp, stable ID, and resulting state. An API acknowledgement is not a user-visible/provider outcome.
 
