@@ -2,6 +2,14 @@
 
 Load only for career, teaching, freelance, consulting, sales, deal, contract, or work-offer classification.
 
+## Job-Search Progression Doctrine
+
+For a hiring opportunity, default a plausibly relevant role or warm process to `apply / proceed`. A lower salary or rate, employment format, title mismatch, missing preferred technology, or imperfect wishlist match is not itself a rejection reason. Discover compensation with its currency, unit, and meaning plus the real responsibilities, seniority, ownership, contract, duration, location, work model, travel, and onsite cadence; never convert one opportunity's number into a universal minimum.
+
+Keep permanent, contract, freelance/B2B, remote, hybrid, hourly, daily, monthly, commission, and adjacent strong-fit AI/software paths open unless the user explicitly excludes them. Tailor with the strongest truthful production evidence and clear employment/founder/consulting/project chronology; never manufacture facts. Default a viable recruiter interaction to concise interest, immediate availability, the requested information, and a concrete next step.
+
+Prioritize warm human replies, requested CVs or documents, screening questions, assessments, deadlines, and scheduling above cold applications. If the latest complete message is already outbound and the employer or recruiter owes the next move, record `waiting_on_employer` and do not draft or send a duplicate follow-up unless a real deadline has passed. Keep other processes alive while waiting.
+
 Use the narrowest state supported by current evidence:
 
 - `candidate / not applied`;
