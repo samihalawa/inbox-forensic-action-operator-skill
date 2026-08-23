@@ -11,6 +11,10 @@ Recover the current truth for every in-scope entity, identify the latest ball-in
 
 Research must unblock action. Action must never outrun source truth.
 
+## Context-Check First, Then Act
+
+Reconstruct state from CRM, Gmail Sent/Drafts, Calendar, and the full thread before any outbound action — never from the newest message, an unread flag, a leftover draft, or a prior summary. A user correction outranks an older inference until fresh evidence supersedes it; re-derive state each run. Drafted ≠ sent; "attached" ≠ attachment present. After two unanswered ordinary messages, escalate through a different channel, never a third identical email.
+
 ## Normalize The Request
 
 Freeze this contract before source work:
