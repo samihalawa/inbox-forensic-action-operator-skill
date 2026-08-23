@@ -1,4 +1,4 @@
 interface:
-  display_name: "Inbox Forensic Action Operator"
-  short_description: "Audit cross-channel and export truth before action"
-  default_prompt: "Use $inbox-forensic-action-operator-skill to reconcile authorized live sources, keep proof layers distinct, apply the career progression doctrine to job processes, prioritize warm requested actions, avoid duplicate follow-ups while the other party owes the next move, and verify mutations natively."
+  display_name: "Career Context & Inbox Operator"
+  short_description: "Reconstruct opportunity context, then act and verify"
+  default_prompt: "Use $inbox-forensic-action-operator-skill to reconstruct the current career or business context graph across Twenty, Sent/Drafts, Calendar, full threads, LinkedIn/ATS, WhatsApp, and recordings; then autonomously complete the authorized action, keep proof states distinct, avoid duplicate follow-ups, and read every mutation back natively."

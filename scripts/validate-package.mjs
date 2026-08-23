@@ -10,7 +10,9 @@ const requiredFiles = [
   'agents/openai.yaml',
   'references/audit-recipes.md',
   'references/core-evidence-model.md',
+  'references/context-graph.md',
   'references/mutation-idempotency.md',
+  'references/post-interview-workflow.md',
   'references/overlays/opportunity.md',
   'references/adapters/email.md',
   'references/adapters/crm.md',
@@ -53,6 +55,8 @@ const relativeName = (path) => path.slice(root.length + 1);
 const contents = Object.fromEntries(publicTextFiles.map((path) => [relativeName(path), readFileSync(path, 'utf8')]));
 const skill = contents['SKILL.md'] ?? '';
 const linkedinExportAdapter = contents['references/adapters/linkedin-export.md'] ?? '';
+const contextGraph = contents['references/context-graph.md'] ?? '';
+const postInterview = contents['references/post-interview-workflow.md'] ?? '';
 
 if (!/^---\n[\s\S]*?\n---\n/.test(skill)) errors.push('SKILL.md frontmatter is missing or malformed');
 if (!/^name: inbox-forensic-action-operator-skill$/m.test(skill)) errors.push('Unexpected skill name');
@@ -61,9 +65,16 @@ for (const phrase of [
   'numbered partitions', 'RFC 4180-aware CSV reader', 'logical records',
   'export_application_snapshot', 'both inbound and outbound', 'current native sources',
 ]) if (!linkedinExportAdapter.includes(phrase)) errors.push(`LinkedIn export adapter missing invariant: ${phrase}`);
+for (const phrase of [
+  'Context-check sequence', 'Twenty two-wave retrieval', 'messageParticipants -> messages -> messageThreads',
+  'Calendar Events do not directly own', 'Context-checking is an execution precondition',
+]) if (!contextGraph.includes(phrase)) errors.push(`Context graph missing invariant: ${phrase}`);
+for (const phrase of [
+  'Pocket canonicalization is a required component', 'waiting_on_employer', 'one internal opportunity summary',
+]) if (!postInterview.includes(phrase)) errors.push(`Post-interview module missing invariant: ${phrase}`);
 
 const skillWords = skill.trim().split(/\s+/).length;
-if (skillWords > 1200) errors.push(`SKILL.md exceeds 1200 words: ${skillWords}`);
+if (skillWords > 1500) errors.push(`SKILL.md exceeds 1500 words: ${skillWords}`);
 
 const metadata = contents['agents/openai.yaml'] ?? '';
 if (!metadata.includes('$inbox-forensic-action-operator-skill')) errors.push('Agent metadata does not invoke the skill by name');
@@ -131,6 +142,7 @@ const requiredScenarioIds = [
   'LINKEDIN-CONTACT-EMAIL', 'CARDDAV-CONTACT-HANDOFF',
   'LINKEDIN-EXPORT-PARTITIONS', 'LINKEDIN-EXPORT-CSV-ROWS', 'LINKEDIN-EXPORT-DIRECTION',
   'LINKEDIN-EXPORT-PROOF', 'LINKEDIN-EXPORT-PREAMBLE',
+  'CONTEXT-GRAPH-TWO-WAVE', 'POST-INTERVIEW-WAIT',
 ];
 for (const id of requiredScenarioIds) {
   if (!ids.includes(id)) errors.push(`Missing acceptance scenario ID: ${id}`);

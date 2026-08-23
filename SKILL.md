@@ -1,19 +1,31 @@
 ---
 name: inbox-forensic-action-operator-skill
-description: This skill should be used to audit or act on email, CRM, meeting, WhatsApp, calendar, ATS, LinkedIn export, provider, and browser-action timelines when completeness, latest state, delivery, opportunity status, or safe follow-through matters.
+description: This skill should be used to reconstruct and act on complete career, recruiter, employer, client, inbox, CRM, meeting, interview, recording, WhatsApp, calendar, ATS, LinkedIn export, provider, and browser-action context when current state, ball-in-court, delivery, follow-up, artifacts, or opportunity progression matters.
 ---
 
-# Inbox Forensic Action Operator
+# Career Context, Inbox, Interview, And Follow-Up Operator
 
 ## Outcome
 
-Recover the current truth for every in-scope entity, identify the latest ball-in-court, and perform only the mutations the user authorized. Treat channels as one evidence graph without collapsing distinct identities, events, or proof layers.
+Recover the current truth for every in-scope career or business entity, identify the latest ball-in-court, and complete the authorized next action. Treat channels as one evidence graph without collapsing distinct identities, events, or proof layers. This is the canonical owner for inbox opportunity triage and post-conversation reconciliation.
 
 Research must unblock action. Action must never outrun source truth.
 
 ## Context-Check First, Then Act
 
 Reconstruct state from CRM, Gmail Sent/Drafts, Calendar, and the full thread before any outbound action — never from the newest message, an unread flag, a leftover draft, or a prior summary. A user correction outranks an older inference until fresh evidence supersedes it; re-derive state each run. Drafted ≠ sent; "attached" ≠ attachment present. After two unanswered ordinary messages, escalate through a different channel, never a third identical email.
+
+Load [Career And Opportunity Context Graph](references/context-graph.md) for every recruiter, employer, client, job, application, interview, meeting, or follow-up workflow. It defines the fact-checked Twenty two-wave graph and cross-source reconstruction sequence. Do the context check yourself, then act autonomously; an inaccessible source narrows proof but does not stop unrelated safe actions.
+
+## Workflow Routing
+
+- Inbox audit, attention, delivery, dedupe, or outbound: use the core recipes and relevant channel adapters.
+- Career or commercial entity state: also load [Opportunity Overlay](references/overlays/opportunity.md).
+- Completed or attempted interview/call that requires recording, calendar, CRM, artifact, or follow-up work: also load [Post-Interview Opportunity Module](references/post-interview-workflow.md).
+- LinkedIn application or full-CV generation: hand the exact opportunity identity and reconstructed state to `$linkedin-jobs-apply-skill`.
+- Jobgether or another non-LinkedIn job platform: hand the exact opportunity identity and reconstructed state to `$job-platforms-full-workflow-skill`.
+
+The handoff changes the action surface, not the entity. Return native IDs, source timestamps, current state, response owner, authority, and proof debt to this context graph after execution.
 
 ## Normalize The Request
 
