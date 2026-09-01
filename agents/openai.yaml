@@ -1,4 +1,4 @@
 interface:
-  display_name: "Career Context & Inbox Operator"
-  short_description: "Reconstruct opportunity context, then act and verify"
-  default_prompt: "Use $inbox-forensic-action-operator-skill to reconstruct the current career or business context graph across Twenty, Sent/Drafts, Calendar, full threads, LinkedIn/ATS, WhatsApp, and recordings; then autonomously complete the authorized action, keep proof states distinct, avoid duplicate follow-ups, and read every mutation back natively."
+  display_name: "Inbox & Recruiter Action Operator"
+  short_description: "Reconstruct context and ship async-first recruiter packets"
+  default_prompt: "Use $inbox-forensic-action-operator-skill to reconstruct the complete cross-channel opportunity state, prepare a tailored CV plus evidence brief when useful, minimize generic meetings, execute authorized actions once, and verify every result natively."

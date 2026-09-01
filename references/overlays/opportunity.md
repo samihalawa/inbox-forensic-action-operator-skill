@@ -40,6 +40,12 @@ Keep distinct roles, assignments, applications, and deals separate even when the
 
 ## Career Pipeline Reconciliation
 
+### Async-First Recruiter Progression
+
+For a new or materially changed recruiter process, prefer a decision-complete written package before a generic introductory call: a current role-specific CV, a separate evidence/fit brief, and a concise forwardable message that answers the known requirements, states verified availability and work constraints, permits direct client progression, and asks for every remaining question in writing. Inspect the complete JD, current canonical career facts, prior submissions, and full cross-channel history first. Never infer the client or convert a likely public listing into confirmed requirements.
+
+This policy reduces screening friction; it does not suppress a recruiter-required call or a substantive recruiter, technical, client, negotiation, or later-stage conversation. Do not resend a package when the newest complete turn is already outbound or when the same materials were already sent and no correction is required.
+
 - Treat LinkedIn data exports as dated snapshot evidence. Inventory every numbered partition, parse logical CSV records, preserve source row provenance, and sort conversation events by parsed time. An export application row is `export_application_snapshot`, not current receipt, reply, interview, offer, acceptance, or hire; saved jobs and saved answers are weaker, distinct evidence types.
 - Bind each application to raw platform job ID or requisition ID, canonical URL, employer, title, submission timestamp, selected CV, contact details, and literal confirmation. Similar titles or employer names do not deduplicate different requisitions; location mirrors and same-title reposts require an explicit identity decision.
 - Treat tracker rows, CRM opportunities, recruiter threads, calendar events, and ATS records as separate evidence layers. Repair stale internal status only after the source-native latest event is read.
