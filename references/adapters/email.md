@@ -15,6 +15,12 @@
 - Force chronological order. `Most relevant` and `1–100 of many` are incomplete.
 - Normalize rich and ID-only searches to one message/thread namespace before comparing sets.
 
+### Exhaustive Recruiter Corpus
+
+When scope is all/every recruiter or LinkedIn conversation, freeze the mailbox, time window, and query family, then exhaust every page before relevance filtering. Union full-message LinkedIn relays, digest-only notices, and direct human recruiter/employer email in the same window. Record separate counts and IDs for body-present relays, digest-only source signals, direct email, duplicates, and machine traffic. A relay-only query cannot support complete recruiter coverage.
+
+Only after enumeration, group by exact person, organization, role/requisition, and opportunity; hydrate each full thread and later Sent, Drafts, direct replies, Calendar, closure, ATS/provider, and previous-attachment state. Preserve one exclusion reason per non-actionable entity.
+
 ## Cursor And Cursorless Proof
 
 For paged routes record query, order, page token/range, returned IDs, declared total, duplicates, and final range.
@@ -24,6 +30,8 @@ For IMAP or another finite cursorless result record mailbox identity, UIDVALIDIT
 ## Thread, Draft, And Send Proof
 
 Read full message order, event times, From/To/CC/Reply-To, stable message/thread IDs, labels, attachments, failures, and drafts. Detect default message caps and reconcile oldest/newest boundaries.
+
+Bind every failure or bounce to the exact message ID, recipient, and send window. A failed supplementary or relay message does not invalidate a separate main package unless provider evidence links that exact send.
 
 Membership in Drafts or a source-native `DRAFT` label is authoritative. `From: me`, All Mail membership, body content, or an outbound-looking recipient never proves send. `Sent` requires Sent membership plus current thread/provider readback. A self-report with no matching Sent/thread evidence remains attempted/self-reported with mailbox proof debt.
 

@@ -29,6 +29,8 @@ For recruiter or application-document corrections, first read the whole thread a
 5. Read back Sent/thread or chat/provider message ID and current target.
 6. Search for immediate failure bound to the exact recipient, ID, and send window.
 
+For a batch, finish the current entity before the next: newest-state reread, exact payload and attachments, one send or provider action, native readback, and failure binding. Never let one entity's bounce, portal obligation, or ambiguous result change a sibling action's state.
+
 ## Ambiguous Results
 
 If a mutation times out or returns an ambiguous response, do not retry immediately. Reopen the target and search by action fingerprint, stable ID, recipient, timestamp, and payload. Retry only when same-layer evidence proves the first action did not happen.
@@ -36,6 +38,8 @@ If a mutation times out or returns an ambiguous response, do not retry immediate
 ## Forms, CRM, Calendar, And Providers
 
 Before submit/book/update, reopen the live target and verify identity, current state, required fields, dates/timezone, and validation errors. Inspect the final review page/state and never bypass the target's own final confirmation control. Execute when the current request authorizes the exact action or a defined batch containing it; do not reopen that authority for each item. If the target, consequential values, or mutation scope are genuinely absent, request only the missing fact before the affected mutation.
+
+An email package does not satisfy a requested booking, invitation acceptance, ATS application, portal pitch, questionnaire, or provider form. Complete and verify that separate obligation when authorized, or retain it as explicit proof debt.
 
 After action, preserve literal confirmation text, timestamp, stable ID, and resulting state. An API acknowledgement is not a user-visible/provider outcome.
 
