@@ -61,7 +61,7 @@ For an exhaustive LinkedIn-recruiter audit, enumerate every paged full-message r
 
 When native LinkedIn Contact info exposes an email, bind it to that exact profile and reconcile the full Gmail thread before choosing the channel. Prefer the channel already used successfully or explicitly requested. Check native LinkedIn after an email reply for a newer turn, and check Gmail after LinkedIn activity for relayed replies. After two unanswered ordinary messages, use a verified alternate channel rather than a third identical email.
 
-Hand LinkedIn applications to the global `linkedin-application-operator` when available; hand non-LinkedIn applications to `$job-platforms-full-workflow-skill`. Return native IDs, timestamps, selected artifacts, current state, response owner, and proof debt to this graph.
+Hand every LinkedIn, official-ATS, direct-employer, job-platform, recruiter-linked, and CV-tailored application to `$high-value-job-application-campaign-skill`. That skill is the only application owner; this inbox skill supplies current thread, ball-in-court, deadline, native IDs, timestamps, selected artifacts, and proof debt without creating a competing application workflow.
 
 When authorized contact maintenance is in scope, hand the verified identity to `$icloud-carddav-contact-manager`; do not perform that write in `audit`.
 
