@@ -1,4 +1,4 @@
 interface:
-  display_name: "Inbox & Recruiter Action Operator"
-  short_description: "Reconstruct context and ship async-first recruiter packets"
-  default_prompt: "Use $inbox-forensic-action-operator-skill to reconstruct the complete cross-channel opportunity state, prepare a tailored CV plus evidence brief when useful, minimize generic meetings, execute authorized actions once, and verify every result natively."
+  display_name: "Inbox & Opportunity Truth Operator"
+  short_description: "Audit opportunity truth, money risk, and next actions"
+  default_prompt: "Use $inbox-forensic-action-operator-skill to reconstruct complete cross-channel opportunity state, run a source-complete 72-hour and seven-day Opportunity Truth Audit, rank money proximity and preventable loss, and return the requested standard, English tts, or Chinese ttsc report."
