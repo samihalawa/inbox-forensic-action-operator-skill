@@ -41,32 +41,17 @@ For recent-work, typo-heavy intent, or cross-app reconstruction, inspect Chronic
 
 When the user asks what matters most, what was missed or remains pending, how useful recent work was, which opportunity is closest to money, or for a 72-hour plus seven-day review, run the `Opportunity Truth Audit` in [Audit Recipes](references/audit-recipes.md). Also load the [Email](references/adapters/email.md), [CRM](references/adapters/crm.md), and [Meetings](references/adapters/meetings.md) adapters, [Opportunity Overlay](references/overlays/opportunity.md), and [Core Evidence Model](references/core-evidence-model.md). When Twenty is accessible, load `$twenty-crm-best-practices`, current-probe its contract, and use its opportunity graph before reconciling newer native evidence.
 
-Default this report to `audit`: do not send, draft, submit, schedule, mark read, change CRM, create trackers, or mutate local or external state unless the user separately authorizes those actions. Enumerate the bounded corpus before filtering; read every in-window message body and every consequential full thread; prove direction, identity, stage, owner, money, deadlines, meetings, and completion from the source that owns each event.
+Default this report to `audit`: mutate nothing, locally or externally, unless the user separately authorizes it. Enumerate the bounded corpus before filtering; read every in-window message body and every consequential full thread; prove direction, identity, stage, owner, money, deadlines, meetings, and completion from the source that owns each event.
 
-Rank credible money-in work by explicit guaranteed value, verified proximity to money, preventable-loss urgency, user actionability, and evidence credibility. Apply the recipe's critical-loss override so an advanced, recoverable, expiring opportunity cannot be buried beneath new applications or completed vendor calls. Score real work from protected advanced opportunities and verified stage transitions, not activity volume. Repeat runs must refresh native state and converge only when no meaningful user-owned action or recoverable valuable miss remains and coverage is complete.
+Rank everything owed in the single stakes queue defined below, scoring real work from verified stage transitions rather than activity volume. Repeat runs refresh native state and converge only when no meaningful user-owned action or recoverable valuable miss remains and coverage is complete.
 
 ## Stakes Ledger
 
-Ranking by money-in alone buries work whose whole importance is what breaks if it is ignored. Three unpaid $20 invoices are trivial as money and critical as consequence when the sender states the subscription is cancelled in 30 days. Every actionable item therefore carries a stakes record, and the ledger has two sides.
-
-- `CASH_IN` — money that arrives if the user acts: offers, contracts, invoices owed to him, paying students, bookings.
-- `CASH_OUT` — money he loses or owes if he does not act: overdue invoices, penalties, late fees, auto-renewals he wants stopped, claims against him.
-- `CAPABILITY` — a service, subscription, account, domain, certificate, API key, listing or access that degrades, suspends, downgrades or is deleted on a stated date.
-- `LEGAL` — a filing, dispute, claim, appeal, takedown, tax or regulator deadline naming him or his companies.
-- `RELATIONSHIP` — a live process that dies from silence: interview, assessment, client thread, student, active negotiation.
-- `NONE` — nothing is at risk; the item is not actionable and is not ranked.
-
-Each record carries `amount` with its currency, `deadline` as an absolute date, `consequence` as one clause naming what happens when that date passes, and `reversible` as YES / NO / UNKNOWN.
-
-Take every one of these from the source text only. An amount the source did not state stays blank; a deadline the source did not state stays blank. Blank is an evidence gap and is shown as blank. Never substitute zero, never infer a date from a received timestamp, never round or total figures the sender kept separate. When the source states several amounts and dates for one obligation, keep the earliest deadline and the summed amount only if the sender itself presents them as one balance, and say which.
-
-Rank actionable work by: irreversible stakes with a named deadline first, ordered by that deadline; then reversible stakes with a named deadline, same order; then stakes with an amount and no deadline, largest first; then everything else by evidence credibility and user actionability. A small `CASH_OUT` or `CAPABILITY` item with a hard date and a stated consequence outranks a large `CASH_IN` item with neither. The critical-loss override still applies: an advanced, recoverable, expiring opportunity is never buried beneath new applications or completed vendor calls.
-
-An item whose stakes are real but whose amount, deadline or consequence could not be read from the source is ranked as unresolved and shown with the gap named. It is never silently demoted for being incomplete.
+Rank owed work by cost of delay, not money-in alone: an imminent material loss outranks lower-priority income. Each item carries kind, amount, deadline, consequence, reversibility and remediation lead time, read from the source only — blank is an evidence gap, never a zero. Load [Stakes Ledger](references/stakes-ledger.md) before ranking or reporting.
 
 ## Spoken Output Modes
 
-Treat `ttsc` as a distinct exact mode that takes precedence over the `tts` substring.
+`ttsc` is an exact mode taking precedence over the `tts` substring.
 
 - `tts`: Deliver the complete Opportunity Truth Audit in English as natural spoken prose. Preserve every material ranking, value, deadline, owner, miss, criticism, next action, and coverage gap. Do not use Markdown tables, dense ID dumps, raw URLs, or visual-only references. Use short titled transitions and pronounce dates, currencies, scores, and acronyms naturally. This is the full report, not an executive summary.
 - `ttsc`: Deliver exactly one TTS-friendly paragraph in Chinese and no other language except indispensable proper nouns. Begin exactly: `薯冰乐，以下是真实的进度报告。` Focus first and most heavily on verified work completed and measurable progress, then state what is missing, missed, at risk, or pending, who owns it, and the highest-priority next action. Distinguish waiting-on-others from unfinished user work. Include a brief coverage limitation when the audit is partial. Use natural spoken dates, money, and transitions; omit Markdown, bullets, tables, raw IDs, URLs, labels, and agent/process narration. Do not inflate completion or hide material losses to make the progress sound better.
@@ -81,7 +66,7 @@ Use current canonical career facts. Answer every explicit question and, when jus
 
 Inspect every relevant native LinkedIn conversation, not only notification mail. A digest without message text proves `VERIFY_SOURCE`, not what the person wants. A LinkedIn relay containing the full human message may be replied to by email only when its exact conversation-specific Reply-To is current and verified. Never send to a generic `hit-reply` address or derive an address from a company domain.
 
-For an exhaustive LinkedIn-recruiter audit, enumerate every paged full-message relay and digest plus all direct human recruiter/employer email in the same bounded window before entity filtering. Record body-present versus digest-only counts and do not let a relay-only query hide adjacent direct email.
+For an exhaustive LinkedIn-recruiter audit, enumerate every paged relay and digest plus all direct recruiter/employer email in the same window before entity filtering; record body-present versus digest-only counts and never let a relay-only query hide adjacent direct email.
 
 When native LinkedIn Contact info exposes an email, bind it to that exact profile and reconcile the full Gmail thread before choosing the channel. Prefer the channel already used successfully or explicitly requested. Check native LinkedIn after an email reply for a newer turn, and check Gmail after LinkedIn activity for relayed replies. After two unanswered ordinary messages, use a verified alternate channel rather than a third identical email.
 
@@ -91,7 +76,7 @@ When authorized contact maintenance is in scope, hand the verified identity to `
 
 ## Execute And Verify
 
-Canonicalize decisive events with [Core Evidence Model](references/core-evidence-model.md). Immediately before every mutation, reread the newest state, exact sender/recipient/thread, body, attachments, authority, and duplicate fingerprint using [Mutation And Idempotency](references/mutation-idempotency.md). Execute once.
+Canonicalize decisive events with [Core Evidence Model](references/core-evidence-model.md). Before every mutation reread the newest state, exact sender/recipient/thread, body, attachments, authority and duplicate fingerprint using [Mutation And Idempotency](references/mutation-idempotency.md), then execute once.
 
 Read back the native Sent/chat/provider record, exact recipients, body, stable ID, timestamp, and actual attachments. Search for failures bound to that action. Then run a delta sweep across new inbound/outbound messages, LinkedIn, calls, Calendar, ATS/provider outcomes, and CRM; recompute ownership, counts, rankings, and next actions.
 
@@ -105,4 +90,4 @@ Lead output with the outcome, then show entity, latest state, proof layer, respo
 
 ## Package Validation
 
-After changing this skill, run `node scripts/validate-package.mjs`. Publish only after structural fixtures, [Live Acceptance](tests/live-acceptance.md), exact source/remote/installed equality, and public-copy review pass.
+After changing this skill, run `node scripts/validate-package.mjs` and publish only after it passes, together with [Live Acceptance](tests/live-acceptance.md), exact source/remote/installed equality, and public-copy review.

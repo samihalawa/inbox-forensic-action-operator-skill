@@ -85,13 +85,13 @@ Classify each entity before ranking:
 - `administrative/security/legal/personal`;
 - `noise/promotion/automation/unverified`.
 
-Only money-in competes in the primary opportunity ranking. Keep other classes visible when they require action, create risk, consume meaningful time, or explain distorted attention. Retain automated messages when they prove submission, assessment, deadline, expiry, invitation, rejection, cancellation, reschedule, offer, onboarding, payment, or contract state; they are provider evidence, not human interest.
+One stakes priority queue holds the primary ranking, ordered by cost of delay per [Stakes Ledger](stakes-ledger.md); economic direction is an attribute of an item, not its admission ticket. Money-in, preventable money-out, capability loss and legal deadlines compete in that single queue, so an imminent material capability loss appears ahead of lower-priority income work in the final report. Keep other classes visible when they require action, create risk, consume meaningful time, or explain distorted attention. Retain automated messages when they prove submission, assessment, deadline, expiry, invitation, rejection, cancellation, reschedule, offer, onboarding, payment, or contract state; they are provider evidence, not human interest.
 
 Preserve original amount, currency, period, source, time, and provenance. Separate guaranteed cash from bonus, commission, OTE, equity, tokens, ceilings, uncommitted extensions, and forecasts. Divide an explicit annual guaranteed amount by twelve. Normalize other rates only when currency, working time, minimum commitment, and duration support it. Undisclosed compensation is unknown, not zero. Do not invent probability or expected value.
 
 ### Rank Money-In And Preventable Loss
 
-Score only open or plausibly recoverable money-in opportunities and expose each component:
+Score open or plausibly recoverable money-in opportunities on the components below, then merge them into the single stakes queue against dated loss-prevention items; expose each component:
 
 - economic value: 0–30;
 - verified stage/proximity to money: 0–25;
@@ -126,7 +126,7 @@ Return:
 
 1. truth in one sentence;
 2. executive verdict and audit coverage;
-3. ranked open/recoverable money-in priorities with score components, money, owner, deadline, exact action, consequence, confidence, account, stable ID, and timestamp;
+3. the ranked stakes queue — money-in and loss-prevention items together, ordered by cost of delay — with score components, stakes kind, money, owner, deadline, exact action, consequence, confidence, account, stable ID, and timestamp;
 4. critical misses, damage, and near-misses separated by proof and recoverability;
 5. consequential 72-hour chronology;
 6. seven-day portfolio grouped by verified stage;
