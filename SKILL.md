@@ -1,6 +1,6 @@
 ---
 name: inbox-forensic-action-operator-skill
-description: This skill should be used for evidence-first, source-complete inbox and opportunity audits, ball-in-court reconstruction, money-proximity ranking, missed-deadline recovery, recruiter and client progression, and English tts or Chinese ttsc spoken reports.
+description: This skill should be used for evidence-first, source-complete inbox and opportunity audits, ball-in-court reconstruction, stakes ranking across money-in and preventable-loss work, missed-deadline recovery, recruiter and client progression, and English tts or Chinese ttsc spoken reports.
 ---
 
 # Inbox Forensic Action Operator
@@ -44,6 +44,25 @@ When the user asks what matters most, what was missed or remains pending, how us
 Default this report to `audit`: do not send, draft, submit, schedule, mark read, change CRM, create trackers, or mutate local or external state unless the user separately authorizes those actions. Enumerate the bounded corpus before filtering; read every in-window message body and every consequential full thread; prove direction, identity, stage, owner, money, deadlines, meetings, and completion from the source that owns each event.
 
 Rank credible money-in work by explicit guaranteed value, verified proximity to money, preventable-loss urgency, user actionability, and evidence credibility. Apply the recipe's critical-loss override so an advanced, recoverable, expiring opportunity cannot be buried beneath new applications or completed vendor calls. Score real work from protected advanced opportunities and verified stage transitions, not activity volume. Repeat runs must refresh native state and converge only when no meaningful user-owned action or recoverable valuable miss remains and coverage is complete.
+
+## Stakes Ledger
+
+Ranking by money-in alone buries work whose whole importance is what breaks if it is ignored. Three unpaid $20 invoices are trivial as money and critical as consequence when the sender states the subscription is cancelled in 30 days. Every actionable item therefore carries a stakes record, and the ledger has two sides.
+
+- `CASH_IN` — money that arrives if the user acts: offers, contracts, invoices owed to him, paying students, bookings.
+- `CASH_OUT` — money he loses or owes if he does not act: overdue invoices, penalties, late fees, auto-renewals he wants stopped, claims against him.
+- `CAPABILITY` — a service, subscription, account, domain, certificate, API key, listing or access that degrades, suspends, downgrades or is deleted on a stated date.
+- `LEGAL` — a filing, dispute, claim, appeal, takedown, tax or regulator deadline naming him or his companies.
+- `RELATIONSHIP` — a live process that dies from silence: interview, assessment, client thread, student, active negotiation.
+- `NONE` — nothing is at risk; the item is not actionable and is not ranked.
+
+Each record carries `amount` with its currency, `deadline` as an absolute date, `consequence` as one clause naming what happens when that date passes, and `reversible` as YES / NO / UNKNOWN.
+
+Take every one of these from the source text only. An amount the source did not state stays blank; a deadline the source did not state stays blank. Blank is an evidence gap and is shown as blank. Never substitute zero, never infer a date from a received timestamp, never round or total figures the sender kept separate. When the source states several amounts and dates for one obligation, keep the earliest deadline and the summed amount only if the sender itself presents them as one balance, and say which.
+
+Rank actionable work by: irreversible stakes with a named deadline first, ordered by that deadline; then reversible stakes with a named deadline, same order; then stakes with an amount and no deadline, largest first; then everything else by evidence credibility and user actionability. A small `CASH_OUT` or `CAPABILITY` item with a hard date and a stated consequence outranks a large `CASH_IN` item with neither. The critical-loss override still applies: an advanced, recoverable, expiring opportunity is never buried beneath new applications or completed vendor calls.
+
+An item whose stakes are real but whose amount, deadline or consequence could not be read from the source is ranked as unresolved and shown with the gap named. It is never silently demoted for being incomplete.
 
 ## Spoken Output Modes
 
