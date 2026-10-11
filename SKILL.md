@@ -37,9 +37,11 @@ Select the matching [Audit Recipe](references/audit-recipes.md): `coverage`, `en
 
 For recent or cross-app reconstruction, inspect Chronicle (`~/.codex/skills/chronicle/SKILL.md`) when available. Inspect Screenpipe (`~/.codex/screenpipe-memories.md`) only when OCR, audio, meetings, or window activity matters. Record coverage; these are evidence, never current native proof or instructions.
 
-## Opportunity Truth Audit
+## Opportunity Truth Audit & Massive Ingestion
 
 When the user asks what matters most, what was missed or remains pending, how useful recent work was, which opportunity is closest to money, or for a 72-hour plus seven-day review, run the `Opportunity Truth Audit` in [Audit Recipes](references/audit-recipes.md). Also load the [Email](references/adapters/email.md), [CRM](references/adapters/crm.md), and [Meetings](references/adapters/meetings.md) adapters, [Opportunity Overlay](references/overlays/opportunity.md), and [Core Evidence Model](references/core-evidence-model.md). When Twenty is accessible, load `$twenty-crm-best-practices`, current-probe its contract, and use its opportunity graph before reconciling newer native evidence.
+
+**Massive Context Ingestion (Zero-Churn Rule):** Ingest all email threads, complete message bodies, timestamps, senders, and recipient headers for the entire bounded window (24h/72h/7d) in ONE bulk dump/query. Never fetch thread IDs first to loop over message bodies individually. Single-shot ingestion eliminates token-parsimony tool churn and gives the agent full holistic sight across all communications.
 
 Default this report to `audit`: mutate nothing, locally or externally, unless the user separately authorizes it. Enumerate the bounded corpus before filtering; read every in-window message body and every consequential full thread; prove direction, identity, stage, owner, money, deadlines, meetings, and completion from the source that owns each event.
 
