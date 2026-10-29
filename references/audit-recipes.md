@@ -27,11 +27,11 @@ Narrow at the source where supported, then hydrate only candidates that can affe
 
 ## Opportunity Truth Audit
 
-Use this read-only recipe for a complete last-72-hours and last-seven-days report of economic opportunities, missed or expiring obligations, meetings, pipeline movement, and real work effectiveness. Its objective is to protect and advance the largest credible amount of money closest to becoming real. Activity volume never outweighs an advanced, valuable, recoverable loss.
+Use this recipe under current request/standing authority, respecting explicit read-only limits, for a complete last-72-hours and last-seven-days report of economic opportunities, missed or expiring obligations, meetings, pipeline movement, and real work effectiveness. Its objective is to protect and advance the largest credible amount of money closest to becoming real. Activity volume never outweighs an advanced, valuable, recoverable loss.
 
 ### Freeze The Windows
 
-Freeze one cutoff at the current system time and use Europe/Madrid unless the user specifies another timezone. Build two nested half-open rolling windows: the previous 72 hours and the previous seven days through the same cutoff. Identify events inside 72 hours, events only in days four through seven, and older material retrieved only as thread context. Never count older context as recent activity.
+The explicit user window and runtime/client date override recipe defaults. Freeze one cutoff at the current client time and use Europe/Madrid unless the user specifies another timezone. Build two nested half-open rolling windows: the previous 72 hours and the previous seven days through the same cutoff. Identify events inside 72 hours, events only in days four through seven, and older material retrieved only as thread context. Never count older context as recent activity.
 
 For any thread containing an in-window event, retrieve the older messages needed to establish origin, promises, and chronology plus all later events through the cutoff that may supersede the apparent state.
 
@@ -85,13 +85,13 @@ Classify each entity before ranking:
 - `administrative/security/legal/personal`;
 - `noise/promotion/automation/unverified`.
 
-One stakes priority queue holds the primary ranking, ordered by cost of delay per [Stakes Ledger](stakes-ledger.md); economic direction is an attribute of an item, not its admission ticket. Money-in, preventable money-out, capability loss and legal deadlines compete in that single queue, so an imminent material capability loss appears ahead of lower-priority income work in the final report. Keep other classes visible when they require action, create risk, consume meaningful time, or explain distorted attention. Retain automated messages when they prove submission, assessment, deadline, expiry, invitation, rejection, cancellation, reschedule, offer, onboarding, payment, or contract state; they are provider evidence, not human interest.
+For a general attention audit use the [Stakes Ledger](stakes-ledger.md) to compare obligations by cost of delay. For earning/opportunity rankings use the qualification, cash-profit and separate-output rules in [Opportunity Overlay](overlays/opportunity.md); no general stakes queue admits early leads into the qualified earning pipeline. Money-in, preventable money-out, capability loss and legal deadlines compete in that single queue, so an imminent material capability loss appears ahead of lower-priority income work in the final report. Keep other classes visible when they require action, create risk, consume meaningful time, or explain distorted attention. Retain automated messages when they prove submission, assessment, deadline, expiry, invitation, rejection, cancellation, reschedule, offer, onboarding, payment, or contract state; they are provider evidence, not human interest.
 
 Preserve original amount, currency, period, source, time, and provenance. Separate guaranteed cash from bonus, commission, OTE, equity, tokens, ceilings, uncommitted extensions, and forecasts. Divide an explicit annual guaranteed amount by twelve. Normalize other rates only when currency, working time, minimum commitment, and duration support it. Undisclosed compensation is unknown, not zero. Do not invent probability or expected value.
 
 ### Rank Money-In And Preventable Loss
 
-Score open or plausibly recoverable money-in opportunities on the components below, then merge them into the single stakes queue against dated loss-prevention items; expose each component:
+Apply the Opportunity Overlay qualification gate before ranking. The optional components below can explain a requested scorecard; they are not a required numerical scoring scheme or permission to merge public tenders, qualified commerce and obligations into one earning total:
 
 - economic value: 0–30;
 - verified stage/proximity to money: 0–25;
@@ -122,7 +122,7 @@ Give a non-compensatory headline verdict: `critical failure` for a confirmed mis
 
 ### Report Order
 
-Return:
+Use the requested deliverable and density first. For an earning ranking, use the two-table format in the Opportunity Overlay and concise separate obligations/leads/noncash benefits; do not force this full scorecard, raw census, or criticism quota. For an explicitly requested comprehensive effectiveness audit, return:
 
 1. truth in one sentence;
 2. executive verdict and audit coverage;

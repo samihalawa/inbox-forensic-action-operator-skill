@@ -21,6 +21,10 @@ Take every one from the source text only. An amount the source did not state sta
 
 Distinguish **not applicable** from **unknown**. A nonmonetary deadline has no amount and is complete; an invoice whose figure was never stated has an unknown amount and is incomplete. Only the second is an evidence gap.
 
+## Qualified revenue boundary
+
+The ledger includes obligations and risks; inclusion never proves qualified income. Apply [Opportunity Overlay](overlays/opportunity.md) before an earning ranking: employment only at final selection/offer/contracting, other commerce after concrete advancement. Separate public cases, advanced commerce, obligations, early leads and noncash benefits. A loss override changes action priority without converting an obligation into revenue. Recover original source costs and later outcomes before declaring unknown values; use the owner's zero-cash-cost own-labour model and genuine external costs. Keep workload separate.
+
 ## Ranking
 
 Order by the cost of delay, not by irreversibility alone. Irreversibility and an explicit date are inputs to that judgement, never the whole of it.

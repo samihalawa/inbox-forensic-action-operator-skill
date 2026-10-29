@@ -1,4 +1,4 @@
 interface:
   display_name: "Inbox & Opportunity Truth Operator"
-  short_description: "Audit opportunity truth, money risk, and next actions"
-  default_prompt: "Use $inbox-forensic-action-operator-skill for source-complete cross-channel audits and authorized actions. Reconcile native outcomes and Twenty, then invoke $twenty-crm-sami-judge-skill through the read-only sami-judge subagent for a rendered-board verdict before closure. Return exact coverage and proof."
+  short_description: "Rank advanced opportunities, cash profit and loss risk"
+  default_prompt: "Use $inbox-forensic-action-operator-skill to reconcile full correspondence and current native states, separate public cases from advanced commerce, apply final-stage employment and actual cash-profit rules, execute authorized follow-through, and report exact coverage, ownership and proof."

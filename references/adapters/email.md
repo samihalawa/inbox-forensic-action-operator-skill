@@ -3,7 +3,7 @@
 ## Identity And Route Preflight
 
 1. Inventory native profiles/accounts and historical aliases before search. One connector's `me` never proves every account.
-2. Use native connector/API first, direct transport second, and an already-authenticated browser third. Authentication failure blocks that route, not the mailbox.
+2. Use native connector/API or direct SMTP/IMAP. Follow current owner/runtime restrictions on Gmail UI: never use Gmail print views; browser access requires an explicitly permitted operation or visual proof. A route authentication failure does not prove the mailbox unavailable.
 3. For direct configuration, read only explicitly named keys. Split each matching line at the first `=`, preserve the remainder literally, ignore blank/comment lines, never `source`, `eval`, interpolate, or print values, and fail the route if a required key is absent or duplicated.
 4. After direct authentication, read back the actual mailbox identity and capabilities. Keep `account_window_coverage` separate from `requested_identity_coverage`.
 
@@ -14,6 +14,14 @@
 - Define a half-open local interval in an IANA timezone, convert endpoints independently, query a safe superset, and post-filter message event timestamps.
 - Force chronological order. `Most relevant` and `1–100 of many` are incomplete.
 - Normalize rich and ID-only searches to one message/thread namespace before comparing sets.
+
+### Census, hydration and continuity
+
+For all/every/recent-correspondence work, exhaust an independent message-ID census before relevance filters, then hydrate complete bodies and consequential threads in provider-sized batches. Reconcile the union of census IDs and same-window IDs discovered through thread hydration. Rich search may omit objects despite normal pagination; its exhaustion alone is not proof. Retain successful bodies/cursors in runtime memory and fetch only missing slices. Detect thread caps, truncated responses and DST boundary omissions.
+
+For Gmail, use exact epoch seconds plus timestamp post-filtering: date strings use PST midnight, API alias expansion differs from UI, and API search is not thread-wide. See [Gmail filtering contract](https://developers.google.com/workspace/gmail/api/guides/filtering). Include verified historical aliases and relevant folder sets; distinguish account-local coverage from all requested identities. A zero-result day during suspension/renaming/forwarding changes is an unresolved continuity slice until delivery/history evidence resolves it, not proof of zero incoming mail.
+
+Keep recent messages, older context, unique threads, duplicates and per-account counts separate. No invented per-day totals. Recover malformed international text from raw RFC 2822 MIME and its declared charset; do not reconstruct corrupted rendered text by guessing.
 
 ### Exhaustive Recruiter Corpus
 

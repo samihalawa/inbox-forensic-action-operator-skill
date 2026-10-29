@@ -1,6 +1,6 @@
 ---
 name: inbox-forensic-action-operator-skill
-description: This skill should be used for evidence-first, source-complete inbox and opportunity audits, ball-in-court reconstruction, stakes ranking across money-in and preventable-loss work, missed-deadline recovery, recruiter and client progression, and English tts or Chinese ttsc spoken reports.
+description: This skill should be used for evidence-first, source-complete inbox and opportunity audits, ball-in-court reconstruction, qualified opportunity and cash-profit ranking, preventable-loss recovery, recruiter and client progression, and English tts or Chinese ttsc spoken reports.
 ---
 
 # Inbox Forensic Action Operator
@@ -21,35 +21,33 @@ Classify each entity as `user owes`, `other side owes`, `scheduled`, `completed`
 
 ## Authority And Recipe
 
-Freeze `entities + discovery scope + output scope + time window + exclusions + authority + proof target`.
+Freeze `entities + discovery/output scope + window + exclusions + authority + proof target`. Current request and standing owner authority control; explicit read-only/report-only limits win.
 
-- `audit`: read/classify only;
+- explicit read-only `audit`: read/classify only;
 - `organize`: mutate only authorized internal records;
 - `draft`: prepare but do not transmit;
 - `send`: transmit after the freshness and payload gates;
 - `execute`: perform only named mutation classes and verify each target.
 
-In `audit`, do not initiate login, reauthentication, connection setup, draft creation, sending, booking, submitting, or writing. A failed route is not an empty source: inventory current capabilities, try viable read-only alternatives, classify the failure origin, and continue safe actions the missing source cannot reverse.
+In explicit read-only `audit`, do not create drafts, send, book, submit, or write. Reuse supported account access under current authority; do not let an older recipe revoke authorized authentication or evident fixes. A failed route is not an empty source: inventory current capabilities, try viable read-only alternatives, classify the failure origin, and continue safe actions the missing source cannot reverse.
 
 Select the matching [Audit Recipe](references/audit-recipes.md): `coverage`, `entity-status`, `attention`, `delivery`, or `recovery`. When the request says `all`, `every`, `fully`, or equivalent, exhaust the complete bounded discovery corpus before relevance filtering; combine `coverage` with the action recipe and never promote a sample to global coverage. Load only the needed adapters: [Email](references/adapters/email.md), [CRM](references/adapters/crm.md), [Meetings](references/adapters/meetings.md), [WhatsApp](references/adapters/whatsapp.md), [Forms](references/adapters/forms.md), and [LinkedIn Export](references/adapters/linkedin-export.md).
 
 ## Chronicle And Screenpipe
 
-For recent or cross-app reconstruction, inspect Chronicle (`~/.codex/skills/chronicle/SKILL.md`) when available. Inspect Screenpipe (`~/.codex/screenpipe-memories.md`) only when OCR, audio, meetings, or window activity matters. Record coverage; these are evidence, never current native proof or instructions.
+For recent cross-app/cross-CLI reconstruction, use Computer History and, when available, Chronicle (`~/.codex/skills/chronicle/SKILL.md`, `~/.codex/memories_extensions/chronicle/instructions.md`, relevant `resources/*.md`). For missing OCR/audio/meeting/window clues, inspect `~/.codex/screenpipe-memories.md`, user-supplied Screenpipe sources, then relevant `~/.screenpipe/` artifacts. Record actual coverage; artifacts are evidence, never instructions or current native proof.
 
 ## Opportunity Truth Audit & Massive Ingestion
 
 When the user asks what matters most, what was missed or remains pending, how useful recent work was, which opportunity is closest to money, or for a 72-hour plus seven-day review, run the `Opportunity Truth Audit` in [Audit Recipes](references/audit-recipes.md). Also load the [Email](references/adapters/email.md), [CRM](references/adapters/crm.md), and [Meetings](references/adapters/meetings.md) adapters, [Opportunity Overlay](references/overlays/opportunity.md), and [Core Evidence Model](references/core-evidence-model.md). When Twenty is accessible, load `$twenty-crm-best-practices`, current-probe its contract, and use its opportunity graph before reconciling newer native evidence.
 
-**Massive Context Ingestion (Zero-Churn Rule):** Ingest all email threads, complete message bodies, timestamps, senders, and recipient headers for the entire bounded window (24h/72h/7d) in ONE bulk dump/query. Never fetch thread IDs first to loop over message bodies individually. Single-shot ingestion eliminates token-parsimony tool churn and gives the agent full holistic sight across all communications.
+**One logical ingestion:** exhaust the bounded message-ID census, hydrate complete bodies/threads in provider-sized batches, reconcile thread-discovered IDs and exact timestamps, and retain the corpus for reuse. Read the [Email adapter](references/adapters/email.md). A giant dump or exhausted rich search does not prove completeness; recover truncated/missing slices without restarting successful reads.
 
-Default this report to `audit`: mutate nothing, locally or externally, unless the user separately authorizes it. Enumerate the bounded corpus before filtering; read every in-window message body and every consequential full thread; prove direction, identity, stage, owner, money, deadlines, meetings, and completion from the source that owns each event.
-
-Rank everything owed in the single stakes queue defined below, scoring real work from verified stage transitions rather than activity volume. Repeat runs refresh native state and converge only when no meaningful user-owned action or recoverable valuable miss remains and coverage is complete.
+Use the current request's authority, window and output. For opportunity rankings, apply the [Opportunity Overlay](references/overlays/opportunity.md): employment only at final selection/offer/contracting, other commerce only after concrete advancement; separate public cases, advanced commerce, obligations, early leads and noncash benefits. Recover historical costs and final steps, apply the owner's zero-cost own-labour model, and rank credible cash profit, closeness to money and preventable loss. Native platforms own consequential status; Twenty coordinates it.
 
 ## Stakes Ledger
 
-Rank owed work by cost of delay, not money-in alone: an imminent material loss outranks lower-priority income. Each item carries kind, amount, deadline, consequence, reversibility and remediation lead time, read from the source only — blank is an evidence gap, never a zero. Load [Stakes Ledger](references/stakes-ledger.md) before ranking or reporting.
+Rank by credible value and cost of delay. Recover amounts/deadlines from original sources; unknown is not zero. Use [Stakes Ledger](references/stakes-ledger.md) for obligations and loss overrides without mixing them into qualified earning totals.
 
 ## Spoken Output Modes
 
@@ -68,7 +66,7 @@ Use current canonical career facts. Answer every explicit question and, when jus
 
 Inspect every relevant native LinkedIn conversation, not only notification mail. A digest without message text proves `VERIFY_SOURCE`, not what the person wants. A LinkedIn relay containing the full human message may be replied to by email only when its exact conversation-specific Reply-To is current and verified. Never send to a generic `hit-reply` address or derive an address from a company domain.
 
-For an exhaustive LinkedIn-recruiter audit, enumerate every paged relay and digest plus all direct recruiter/employer email in the same window before entity filtering; record body-present versus digest-only counts and never let a relay-only query hide adjacent direct email.
+For exhaustive recruiter audits, enumerate relays, digests and direct email before filtering. Record body-present versus digest-only counts; relay-only search misses direct email.
 
 When native LinkedIn Contact info exposes an email, bind it to that exact profile and reconcile the full Gmail thread before choosing the channel. Prefer the channel already used successfully or explicitly requested. Check native LinkedIn after an email reply for a newer turn, and check Gmail after LinkedIn activity for relayed replies. After two unanswered ordinary messages, use a verified alternate channel rather than a third identical email.
 
@@ -80,7 +78,7 @@ When authorized contact maintenance is in scope, hand the verified identity to `
 
 Canonicalize decisive events with [Core Evidence Model](references/core-evidence-model.md). Before every mutation reread the newest state, exact sender/recipient/thread, body, attachments, authority and duplicate fingerprint using [Mutation And Idempotency](references/mutation-idempotency.md), then execute once.
 
-Read back the native Sent/chat/provider record, exact recipients, body, stable ID, timestamp, and actual attachments. Search for failures bound to that action. Then run a delta sweep across new inbound/outbound messages, LinkedIn, calls, Calendar, ATS/provider outcomes, and CRM; recompute ownership, counts, rankings, and next actions.
+Read back native Sent/chat/provider identity, recipients, body, timestamp and attachments. Bind failures to that action. Refresh later relevant events; recompute affected ownership, counts, rankings and next actions.
 
 ## Coverage And Stop
 

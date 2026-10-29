@@ -2,6 +2,25 @@
 
 Load only for career, teaching, freelance, consulting, sales, deal, contract, or work-offer classification.
 
+## Qualified earning opportunities and profit
+
+Apply the current request before the application-progression guidance below. Continuing an application and qualifying it for the main earning ranking are different decisions.
+
+- Employment qualifies only at verified final selection, offer or contracting. Initial or intermediate interviews, preliminary shortlisting, recruiter approaches, acknowledgments and invitations remain early leads, even after a preliminary gate. An advertised vacancy or rate is not an offer.
+- Other commerce requires concrete advancement beyond the first approach: approval/partial approval, a passed selection gate, active negotiation, accepted terms, committed customer or paid transaction. Identify exactly what was approved; preserve an existing paid transaction awaiting delivery/payout as value to protect, not a new win.
+- Separate public tenders/applications from other advanced commercial opportunities. Read official current platform records and latest documents for filing, evaluation, negotiation, correction requests, award and deadlines. Exclude generic tender alerts from earning ranks, but retain individualized advanced correspondence and material administrative obligations.
+- Keep early leads, obligations, rejected/closed cases, routine noise and noncash benefits outside the qualified earning totals. A meaningful human request can require action without qualifying as income.
+
+Before ranking, recover original agreements, acquisition/supplier costs, later Sent and provider events, attachments and relevant conversation/Computer History evidence. Do not repeat an intermediate checkpoint or mark a known cost unknown after checking only the latest message. Apply recovered corrections to similar in-scope cases.
+
+For the owner's cash-profit analysis, own labour and technical delivery have zero cash cost. Include separate staffing only where a binding requirement forces distinct personnel. Deduct genuine external costs such as acquisition, supplier charges, fees, shipping, required travel and mandatory third-party services; optional outsourcing and buyer staffing allowances are scenarios, not automatic deductions. Keep remaining workload visible separately. Recover all supported margin components, including resale/programme margin rather than only an explicit service fee.
+
+Label original currency, value meaning, source and calculation. Separate fixed compensation from contingent bonus/commission, total receipts from held/available funds, programme funding from earned margin, gross/cash profit from tax treatment, shared fees from attributable share, and noncash credits from cash. Do not invent costs, exchange rates, win probabilities or precision; show supported scenarios and exact gaps.
+
+Rank qualified cases by supported profit, closeness to payment/winning, verified deadline, immediate actionability and credible preventable loss. Explain the tradeoff; no mandatory score or largest-headline-value ordering. A material obligation can override action priority without becoming qualified revenue.
+
+For opportunity-ranking output, lead with actions protecting the most credible value, then provide separate ranked public-case and advanced-commercial tables. Each row gives current stage/source, advancement evidence, revenue/profit calculation, received/held/conditional/outstanding funds, remaining action/owner/deadline in the user's timezone, and consequence of delay. Present obligations, early leads and noncash benefits separately. Apply requested format; keep raw census and internal analysis out of a prompt-only or concise final deliverable.
+
 ## Job-Search Progression Doctrine
 
 For a hiring opportunity, default a plausibly relevant role or warm process to `apply / proceed`. A lower salary or rate, employment format, title mismatch, missing preferred technology, or imperfect wishlist match is not itself a rejection reason. Discover compensation with its currency, unit, and meaning plus the real responsibilities, seniority, ownership, contract, duration, location, work model, travel, and onsite cadence; never convert one opportunity's number into a universal minimum.
