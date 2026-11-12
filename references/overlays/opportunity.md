@@ -74,3 +74,7 @@ The package supplements rather than replaces the newest operational ask. In the 
 - Rank warm human replies, document corrections, scheduled meetings, explicit deadlines, and requested screening information above cold applications. A meeting invite is scheduled, not completed; a recruiter acknowledgement is interest, not an offer.
 - When a wrong CV was sent, preserve the original event, send the correct role-relevant CV in the same thread once, verify the attachment in Sent/thread, and record the correction. Do not erase history or create a second CRM opportunity for the same requisition.
 - Count quota progress from literal native confirmations in the requested cohort. `Apply` clicks, review screens, verification emails, drafts, saved applications, and tracker labels without native proof do not count.
+
+## Volume Economics (owner, 12 November 2026)
+
+Ranking orders the work; it never removes items. Within the mode the request authorises, when answering or advancing every pending item costs less than analysing which ones deserve it, do all of them in ranked order: prepare every reply in one pass, review once, send, and read back in bulk. Keep per-item analysis for items with a real loss attached: a deadline with a penalty, a binding commitment, money at risk. Early leads stay out of the qualified-earnings totals and still get their reply.
