@@ -14,10 +14,13 @@
 - Define a half-open local interval in an IANA timezone, convert endpoints independently, query a safe superset, and post-filter message event timestamps.
 - Force chronological order. `Most relevant` and `1–100 of many` are incomplete.
 - Normalize rich and ID-only searches to one message/thread namespace before comparing sets.
+- Treat a mail thread as a transport grouping. For each relevant notice, decode the body and attachments and join its message ID to the provider, receiving identity, case, lot or envelope, and exact act. Keep distinct cases or acts in separate rows even when subject and thread ID match. Deduplicate repeated alerts only after they resolve to the same native act. Keep identity conflicts and unseen notice bodies open.
 
 ### Census, hydration and continuity
 
 For all/every/recent-correspondence work, exhaust an independent message-ID census before relevance filters, then hydrate complete bodies and consequential threads in provider-sized batches. Reconcile the union of census IDs and same-window IDs discovered through thread hydration. Rich search may omit objects despite normal pagination; its exhaustion alone is not proof. Retain successful bodies/cursors in runtime memory and fetch only missing slices. Detect thread caps, truncated responses and DST boundary omissions.
+
+Keep distinct counts for IDs listed, bodies retrieved, decoded text, attachments examined and unresolved entities. Retain the exact failed IDs from per-message batch errors and retry those IDs with lower concurrency and provider backoff. A partial scheduler run or disconnected account keeps its own coverage and watermark even when another source succeeds.
 
 For Gmail, use exact epoch seconds plus timestamp post-filtering: date strings use PST midnight, API alias expansion differs from UI, and API search is not thread-wide. See [Gmail filtering contract](https://developers.google.com/workspace/gmail/api/guides/filtering). Include verified historical aliases and relevant folder sets; distinguish account-local coverage from all requested identities. A zero-result day during suspension/renaming/forwarding changes is an unresolved continuity slice until delivery/history evidence resolves it, not proof of zero incoming mail.
 
