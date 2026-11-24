@@ -22,6 +22,8 @@ For all/every/recent-correspondence work, exhaust an independent message-ID cens
 
 Keep distinct counts for IDs listed, bodies retrieved, decoded text, attachments examined and unresolved entities. Retain the exact failed IDs from per-message batch errors and retry those IDs with lower concurrency and provider backoff. A partial scheduler run or disconnected account keeps its own coverage and watermark even when another source succeeds.
 
+When an attachment can decide the action, inspect its relevant pages and embedded tables. Missing text extraction can hide an image-only decision, deadline or score. Use visual inspection or OCR and reconcile with the native document. Keep the obligation open when a decisive page remains unreadable.
+
 For Gmail, use exact epoch seconds plus timestamp post-filtering: date strings use PST midnight, API alias expansion differs from UI, and API search is not thread-wide. See [Gmail filtering contract](https://developers.google.com/workspace/gmail/api/guides/filtering). Include verified historical aliases and relevant folder sets; distinguish account-local coverage from all requested identities. A zero-result day during suspension/renaming/forwarding changes is an unresolved continuity slice until delivery/history evidence resolves it, not proof of zero incoming mail.
 
 #### Dual-Surface Enumeration & Arrival-Adjustment Protocol (Inline-Only)
