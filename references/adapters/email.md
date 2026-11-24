@@ -21,6 +21,14 @@ For all/every/recent-correspondence work, exhaust an independent message-ID cens
 
 For Gmail, use exact epoch seconds plus timestamp post-filtering: date strings use PST midnight, API alias expansion differs from UI, and API search is not thread-wide. See [Gmail filtering contract](https://developers.google.com/workspace/gmail/api/guides/filtering). Include verified historical aliases and relevant folder sets; distinguish account-local coverage from all requested identities. A zero-result day during suspension/renaming/forwarding changes is an unresolved continuity slice until delivery/history evidence resolves it, not proof of zero incoming mail.
 
+#### Dual-Surface Enumeration & Arrival-Adjustment Protocol
+
+1. **Epoch-buffered census:** Query Gmail with `in:anywhere after:<start_epoch - 86400> before:<end_epoch + 3600>` and `includeSpamTrash=true`, paging `maxResults=500` until `nextPageToken` is absent. Never pre-filter by sender, topic, label, or read state. Post-filter strictly on `internalDate` ms in `[start_ms, end_ms)`.
+2. **Bounded-concurrency hydration & incremental retry:** Fetch `format=full` with modest concurrency (about 10 workers), exponential backoff on `429`/`403`/`5xx`, and incremental persistence so retries re-fetch only failed IDs. Disclose any residual unhydrated IDs explicitly.
+3. **Apple Mail `Envelope Index` arrival-adjustment & secondary cache check:** Read `~/Library/Mail/V10/MailData/Envelope Index` (SQLite `?mode=ro`) for `date_received` in the exact window and resolve `.emlx` `Message-ID` headers. Reconcile against live Gmail `Message-ID`s so messages delivered inside the window whose Gmail `internalDate` precedes `start_ms` are fetched (`rfc822msgid:<id>`) and included tagged `arrival-adjusted`. For secondary local accounts not authenticated for live API access, record the `MAX(date_received)` cache watermark and label coverage `cache-only`.
+4. **Route fallback hierarchy:** Direct OAuth REST API (in-memory refresh only) -> native local `gmail` CLI (`readonly read --page-token`, using `AGY_ACCOUNT=<email>` per connected account) -> IMAP -> signed-in browser (only when permitted).
+5. **Sensitive code redaction:** Redact OTPs, 2FA verification codes, and long query credentials as `[code withheld]` before writing Markdown, HTML, or CSV outputs.
+
 Keep recent messages, older context, unique threads, duplicates and per-account counts separate. No invented per-day totals. Recover malformed international text from raw RFC 2822 MIME and its declared charset; do not reconstruct corrupted rendered text by guessing.
 
 ### Exhaustive Recruiter Corpus

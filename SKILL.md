@@ -31,7 +31,16 @@ Freeze `entities + discovery/output scope + window + exclusions + authority + pr
 
 In explicit read-only `audit`, do not create drafts, send, book, submit, or write. Reuse supported account access under current authority; do not let an older recipe revoke authorized authentication or evident fixes. A failed route is not an empty source: inventory current capabilities, try viable read-only alternatives, classify the failure origin, and continue safe actions the missing source cannot reverse.
 
-Select the matching [Audit Recipe](references/audit-recipes.md): `coverage`, `entity-status`, `attention`, `delivery`, or `recovery`. When the request says `all`, `every`, `fully`, or equivalent, exhaust the complete bounded discovery corpus before relevance filtering; combine `coverage` with the action recipe and never promote a sample to global coverage. Load only the needed adapters: [Email](references/adapters/email.md), [CRM](references/adapters/crm.md), [Meetings](references/adapters/meetings.md), [WhatsApp](references/adapters/whatsapp.md), [Forms](references/adapters/forms.md), and [LinkedIn Export](references/adapters/linkedin-export.md).
+Select the matching [Audit Recipe](references/audit-recipes.md): `coverage`, `entity-status`, `attention`, `email-triage-report`, `delivery`, or `recovery`. When the request says `all`, `every`, `fully`, or equivalent, exhaust the complete bounded discovery corpus before relevance filtering; combine `coverage` with the action recipe and never promote a sample to global coverage. Load only the needed adapters: [Email](references/adapters/email.md), [CRM](references/adapters/crm.md), [Meetings](references/adapters/meetings.md), [WhatsApp](references/adapters/whatsapp.md), [Forms](references/adapters/forms.md), and [LinkedIn Export](references/adapters/linkedin-export.md).
+
+## Complete Email Triage & Report Bundle
+
+For full 72-hour or rolling-window email triages (`email-triage-report`, see [Audit Recipes](references/audit-recipes.md) and [Email](references/adapters/email.md)):
+
+- Exhaust Gmail `in:anywhere` (`includeSpamTrash=true`) with epoch buffers, then cross-check Apple Mail `Envelope Index` by RFC `Message-ID` for `arrival-adjusted` deliveries and cache watermarks.
+- Exclude Google Calendar unless explicitly asked for calendar scheduling; derive dates/obligations from emails, attachments, and provider notices, and recover prior-session misses via `$seven-platform-chat-cli`.
+- Verify later `Sent` replies, `Drafts` (`DRAFT` != `Sent`), and release history before flagging waiting items or new launches; keep routine billing, OTPs, generic security alerts, newsletters, and bulk digests out of executive queues while accounting for 100% of rows (`sum(topics) == N`) and redacting OTPs/tokens (`[code withheld]`).
+- Deliver canonical `email-triage-72h` Markdown, searchable 100%-census HTML (noise toggles + CSV export), and A4 PDF in `AI_REPORTS_MASTER/` (plus `ffprobe`/`ffmpeg`-verified audio when requested).
 
 ## Chronicle And Screenpipe
 
@@ -39,11 +48,11 @@ For recent cross-app/cross-CLI reconstruction, use Computer History and, when av
 
 ## Opportunity Truth Audit & Massive Ingestion
 
-When the user asks what matters most, what was missed or remains pending, how useful recent work was, which opportunity is closest to money, or for a 72-hour plus seven-day review, run the `Opportunity Truth Audit` in [Audit Recipes](references/audit-recipes.md). Also load the [Email](references/adapters/email.md), [CRM](references/adapters/crm.md), and [Meetings](references/adapters/meetings.md) adapters, [Opportunity Overlay](references/overlays/opportunity.md), and [Core Evidence Model](references/core-evidence-model.md). When Twenty is accessible, load `$twenty-crm-best-practices`, current-probe its contract, and use its opportunity graph before reconciling newer native evidence.
+For `Opportunity Truth Audit` in [Audit Recipes](references/audit-recipes.md) (what matters most, misses, work effectiveness, closest cash, or 72h+7d review), also load [Email](references/adapters/email.md), [CRM](references/adapters/crm.md), [Meetings](references/adapters/meetings.md), [Opportunity Overlay](references/overlays/opportunity.md), and [Core Evidence Model](references/core-evidence-model.md). When Twenty is accessible, load `$twenty-crm-best-practices`, probe its contract, and seed entity state before reconciling newer native evidence.
 
-**One logical ingestion:** exhaust the bounded message-ID census, hydrate complete bodies/threads in provider-sized batches, reconcile thread-discovered IDs and exact timestamps, and retain the corpus for reuse. Read the [Email adapter](references/adapters/email.md). A giant dump or exhausted rich search does not prove completeness; recover truncated/missing slices without restarting successful reads.
+**One logical ingestion:** exhaust the bounded message-ID census, hydrate full bodies/threads in batches, reconcile thread IDs and timestamps, and retain the corpus; recover missing slices without restarting successful reads.
 
-Use the current request's authority, window and output. For opportunity rankings, apply the [Opportunity Overlay](references/overlays/opportunity.md): employment only at final selection/offer/contracting, other commerce only after concrete advancement; separate public cases, advanced commerce, obligations, early leads and noncash benefits. Recover historical costs and final steps, apply the owner's zero-cost own-labour model, and rank credible cash profit, closeness to money and preventable loss. Native platforms own consequential status; Twenty coordinates it.
+Apply [Opportunity Overlay](references/overlays/opportunity.md): employment only at final selection/offer/contracting, other commerce only after concrete advancement; separate public cases, advanced commerce, obligations, early leads, and noncash benefits. Use zero-cost own labour, recover external costs and final steps, and rank cash profit, closeness to money, and preventable loss. Native platforms own status; Twenty coordinates it.
 
 ## Stakes Ledger
 
@@ -53,14 +62,14 @@ Rank by credible value and cost of delay. Recover amounts/deadlines from origina
 
 `ttsc` is an exact mode taking precedence over the `tts` substring.
 
-- `tts`: Deliver the complete Opportunity Truth Audit in English as natural spoken prose. Preserve every material ranking, value, deadline, owner, miss, criticism, next action, and coverage gap. Do not use Markdown tables, dense ID dumps, raw URLs, or visual-only references. Use short titled transitions and pronounce dates, currencies, scores, and acronyms naturally. This is the full report, not an executive summary.
-- `ttsc`: Deliver exactly one TTS-friendly paragraph in Chinese and no other language except indispensable proper nouns. Begin exactly: `薯冰乐，以下是真实的进度报告。` Focus first and most heavily on verified work completed and measurable progress, then state what is missing, missed, at risk, or pending, who owns it, and the highest-priority next action. Distinguish waiting-on-others from unfinished user work. Include a brief coverage limitation when the audit is partial. Use natural spoken dates, money, and transitions; omit Markdown, bullets, tables, raw IDs, URLs, labels, and agent/process narration. Do not inflate completion or hide material losses to make the progress sound better.
+- `tts`: Deliver the complete Opportunity Truth Audit in English as natural spoken prose preserving every material ranking, value, deadline, owner, miss, criticism, next action, and coverage gap without Markdown tables, ID dumps, or raw URLs.
+- `ttsc`: Deliver one TTS-friendly Chinese paragraph starting `薯冰乐，以下是真实的进度报告。` (only indispensable proper nouns in other languages): verified work completed first, then misses, risks, pending owners, highest-priority next action, and brief coverage limits, with no Markdown, raw IDs, URLs, or inflated completion.
 
 ## Recruiter Async-First Decision Packet
 
 For every new or materially changed recruiter process, use the async-first route in [Opportunity Overlay](references/overlays/opportunity.md); after a call or interview, load [Post-Interview Opportunity Module](references/post-interview-workflow.md). Resolve the exact person, employer/client, role/requisition, complete JD, newest operational request, prior answers/files, and current ball-in-court before proposing contact.
 
-Use current canonical career facts. Answer every explicit question and, when justified, prepare the role-specific CV plus evidence/fit brief described in the module. Inspect both artifacts and keep public copy separate from proof notes. Do not resend a correct package, force a generic meeting, invent facts, or contact someone when the other party owes the next move. Preserve substantive recruiter, technical, client, negotiation, and decision-stage meetings.
+Use current canonical career facts. Answer every explicit question and, when justified, prepare the role-specific CV and evidence/fit brief described in the module; inspect both and keep public copy separate from proof notes. Do not resend a correct package, force a generic meeting, invent facts, or nudge when the other side owes the next move. Preserve substantive recruiter, technical, client, negotiation, and decision-stage meetings.
 
 ## LinkedIn And Email Routing
 

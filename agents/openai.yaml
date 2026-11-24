@@ -1,4 +1,4 @@
 interface:
   display_name: "Inbox & Opportunity Truth Operator"
-  short_description: "Rank advanced opportunities, cash profit and loss risk"
-  default_prompt: "Use $inbox-forensic-action-operator-skill to reconcile full correspondence and current native states, separate public cases from advanced commerce, apply final-stage employment and actual cash-profit rules, execute authorized follow-through, and report exact coverage, ownership and proof."
+  short_description: "Full email triage reports, opportunity truth & loss risk"
+  default_prompt: "Use $inbox-forensic-action-operator-skill to exhaust full email and native states, separate noise with 100% topic accounting, build Markdown/HTML/PDF reports, verify follow-through, and report exact coverage, ownership, and proof."

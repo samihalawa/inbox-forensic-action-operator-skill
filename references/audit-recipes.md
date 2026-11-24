@@ -35,7 +35,20 @@ The explicit user window and runtime/client date override recipe defaults. Freez
 
 For any thread containing an in-window event, retrieve the older messages needed to establish origin, promises, and chronology plus all later events through the cutoff that may supersede the apparent state.
 
-Inspect the next seven days of Calendar events and known deadlines as a separate forward-obligation check, never as retrospective activity. Carry forward every unresolved material obligation found in an existing canonical state or current opportunity graph regardless of age. Do not call a seven-day message window a complete historical opportunity inventory.
+Inspect the next seven days of known deadlines from original emails, attachments, and native provider notices as a separate forward-obligation check, never as retrospective activity. Do not use Google Calendar for inbox triage or recurring inbox reports unless the user explicitly asks for calendar scheduling; Calendar absence never excludes an inbox-only hearing, deadline, or obligation. Carry forward every unresolved material obligation found in an existing canonical state, prior cross-platform triage (`$seven-platform-chat-cli`), or current opportunity graph regardless of age. Do not call a seven-day message window a complete historical opportunity inventory.
+
+## Complete Email Triage & Report Bundle
+
+Use this recipe when the user asks for a complete 72-hour or rolling-window email triage and report (`email-triage-report`):
+
+1. **Zero-filter full enumeration + arrival adjustment:** Exhaust 100% of candidate IDs and reconcile live Gmail `internalDate` against local `Envelope Index` arrival times (see [Email adapter](adapters/email.md)).
+2. **Thread, Sent & Draft verification:** Check later `Sent` messages, `Drafts` (`DRAFT` != `Sent`), and same-reference portal notices before flagging any thread as waiting on the user. Verify app/product release history against repo or store records so routine updates are not mislabeled as first launches.
+3. **Noise separation with 100% accounting:** Keep routine billing, payment receipts, OTPs/verification codes, generic security alerts, newsletters, and bulk automated tender digests out of executive action queues, while accounting for every single message in the dynamic Topic Breakdown (`sum(topics) == N`) and retaining all rows in the full HTML/CSV census with OTPs redacted as `[code withheld]`.
+4. **Canonical deliverables:** Persist to the owner's canonical reports directory (`AI_REPORTS_MASTER/` and update `INDEX.md`):
+   - **Executive Markdown report:** headline verdict, Coverage & Provenance Ledger, Fresh Delta since the prior edition, Urgent Deadlines & Preventable-Loss Queue, People Waiting on User, Verified Achievements, Waiting on Others, Cross-Channel Corroboration (calls/WhatsApp/SMS kept separate), and 100% Topic Breakdown.
+   - **Searchable interactive HTML census:** every message `1..N` in its dynamic topic table with live search, noise/actionable toggles, direct thread links, redacted OTPs, and 1-click CSV export.
+   - **Printable A4 PDF:** rendered from the executive report and verified for page count and readability.
+   - **Verified audio (when requested):** generated only from the final verified report text and checked end-to-end with `ffprobe` and `ffmpeg -v error -i <file> -f null -`.
 
 ### Enumerate Before Relevance Filtering
 
