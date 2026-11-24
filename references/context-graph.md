@@ -5,7 +5,7 @@ Use this route for a person, recruiter, employer, client, role, application, int
 ## Context-check sequence
 
 1. Resolve every plausible identity from name, email, phone, company, domain, role, requisition, thread, event, and native ID. Keep ambiguous matches separate.
-2. Query the canonical CRM first when accessible, then reconcile the mailbox including Sent and Drafts, Calendar (when scheduling or meetings are in scope; omit Google Calendar in inbox-only triage), the full platform/thread history, LinkedIn or ATS state, WhatsApp, recordings, and provider records relevant to the entity.
+2. Query the canonical CRM first when accessible, then reconcile the mailbox including Sent and Drafts, Calendar (when scheduling or meeting verification is explicitly requested; omit Google Calendar in inbox-only triage), the full platform/thread history, LinkedIn or ATS state, WhatsApp, recordings, and provider records relevant to the entity.
 3. Read later events that can supersede the apparent state. A draft, unread inbound, stale CRM stage, notification, or prior report never decides the ball-in-court alone.
 4. Classify the narrowest current state and owner: user owes, other side owes, scheduled, completed, submitted/under review, stale-escalate, dormant, closed, duplicate, or unresolved with the exact missing proof.
 5. Immediately before action, repeat the decisive current reads. Execute under existing authority without asking for routine reconfirmation. Read the real result back and make it the new canonical state.

@@ -7,7 +7,7 @@ description: This skill should be used for evidence-first, source-complete inbox
 
 ## Mission
 
-Recover current truth for each in-scope entity, its next actor, and authorized action. Reconcile Gmail/Apple Mail, CRM, LinkedIn, WhatsApp, ATS, recordings, documents, provider state, and Calendar (when scheduling or meetings are in scope) without merging distinct entities or proof layers.
+Recover current truth for each in-scope entity, its next actor, and authorized action. Reconcile Gmail/Apple Mail, CRM, LinkedIn, WhatsApp, ATS, recordings, documents, provider state, and Calendar (when scheduling or meeting verification is explicitly requested) without merging distinct entities or proof layers.
 
 For recruiting, prefer a decision-complete written package over unnecessary introductory meetings while preserving substantive or required conversations.
 
@@ -15,7 +15,7 @@ For recruiting, prefer a decision-complete written package over unnecessary intr
 
 Load [Career And Opportunity Context Graph](references/context-graph.md) for every recruiter, employer, client, job, application, interview, meeting, or follow-up. Load [Opportunity Overlay](references/overlays/opportunity.md) for career or commercial work and [Post-Interview Opportunity Module](references/post-interview-workflow.md) after a call or interview.
 
-Reconstruct the complete chronology from canonical CRM when accessible and in scope, then full Gmail threads including Sent and Drafts, Calendar (when scheduling or meetings are in scope), native LinkedIn conversations and Contact info, ATS/provider state, WhatsApp, recordings, prior artifacts, and relevant task history. Search both directions and every verified alias. A user correction outranks an older inference until newer primary evidence supersedes it. A newest-message preview, unread flag, digest, draft, stale CRM stage, assistant summary, or claimed send never decides current state alone.
+Reconstruct the complete chronology from canonical CRM when accessible and in scope, then full Gmail threads including Sent and Drafts, Calendar (when scheduling or meeting verification is explicitly requested), native LinkedIn conversations and Contact info, ATS/provider state, WhatsApp, recordings, prior artifacts, and relevant task history. Search both directions and every verified alias. A user correction outranks an older inference until newer primary evidence supersedes it. A newest-message preview, unread flag, digest, draft, stale CRM stage, assistant summary, or claimed send never decides current state alone.
 
 Classify each entity as `user owes`, `other side owes`, `scheduled`, `completed`, `submitted/under review`, `stale-escalate`, `dormant`, `closed`, `duplicate-superseded`, or `unresolved`. Drafted is not sent; sent is not delivered; an invite is not accepted or attended; a generated PDF is not attached; recruiter interest is not client submission.
 
@@ -35,7 +35,7 @@ Select the matching [Audit Recipe](references/audit-recipes.md): `coverage`, `en
 
 ## Complete Email Triage & Report Bundle
 
-For full 72-hour or rolling email triages (`email-triage-report`, see [Audit Recipes](references/audit-recipes.md) & [Email](references/adapters/email.md)): exhaust Gmail `in:anywhere` (`includeSpamTrash=true`) with epoch buffers across all active accounts; reconcile Apple Mail `Envelope Index` by RFC `Message-ID` for `arrival-adjusted` deliveries and cache watermarks; exclude Google Calendar unless scheduling is explicitly requested; verify later `Sent`, `Drafts` (`DRAFT` != `Sent`, distinguishing unsent drafts from drafts superseded by later Sent replies), and prior-session misses (`$seven-platform-chat-cli`); decode MIME charsets (`utf-8` before `iso-8859-1`/`cp1252`, repairing mojibake); keep OTPs, routine billing, generic security noise, newsletters, and bulk digests out of executive queues while redacting OTPs/PINs and long auth tokens (`[code withheld]`) and reconciling 100% of rows (`sum(topics) == N`); run all scripts inline with zero scratch files; deliver Markdown, searchable 100%-census HTML (toggles + CSV), and A4 PDF in `AI_REPORTS_MASTER/`.
+For full 72-hour or rolling email triages (`email-triage-report`, see [Audit Recipes](references/audit-recipes.md) & [Email](references/adapters/email.md)): exhaust Gmail `in:anywhere` (`includeSpamTrash=true`) with epoch buffers across all active accounts; reconcile Apple Mail `Envelope Index` by RFC `Message-ID` for `arrival-adjusted` deliveries and cache watermarks; exclude Google Calendar unless scheduling or meeting verification is explicitly requested; verify later `Sent`, `Drafts` (`DRAFT` != `Sent`, distinguishing unsent drafts from drafts superseded by later Sent replies), and prior-session misses (`$seven-platform-chat-cli`); decode MIME charsets (`utf-8` before `iso-8859-1`/`cp1252`, repairing mojibake); keep OTPs, routine billing, generic security noise, newsletters, and bulk digests out of executive queues while redacting OTPs/PINs and long auth tokens (`[code withheld]`) and reconciling 100% of rows (`sum(topics) == N`); run all scripts inline with zero scratch files; deliver Markdown, searchable 100%-census HTML (toggles + CSV), and A4 PDF in `AI_REPORTS_MASTER/`.
 
 ## Chronicle And Screenpipe
 
@@ -82,7 +82,7 @@ Canonicalize decisive events with [Core Evidence Model](references/core-evidence
 
 Every source row records identity, route, bounds/order, cursor/range, declared/returned/deduped counts, hydration, coverage (`full`, `partial`, `sampled`, `missing`, `blocked`), failure origin, and proof remaining.
 
-When mutating records, reconciling Twenty CRM, or rendering a CRM/opportunity dashboard, invoke `sami-judge` (`$twenty-crm-sami-judge-skill`) once before closure with scope, counts, outcomes, CRM IDs, claims, and dashboard path. For read-only `email-triage-report` without CRM scope, verify the Markdown/HTML/PDF/`INDEX.md` (and audio) deliverables directly instead.
+When mutating CRM records, executing an authorized Twenty CRM write-reconciliation, or rendering a CRM/opportunity dashboard, invoke `sami-judge` (`$twenty-crm-sami-judge-skill`) once before closure with scope, counts, outcomes, CRM IDs, claims, and dashboard path. In strictly read-only `audit` or `email-triage-report` without CRM mutations/scope, verify deliverables directly instead.
 
 Stop only when required sources are reconciled or gapped, every entity has a latest verified event and owner, authorized actions have target readback, and the proof layer is reached; otherwise return `CHECKPOINT`.
 
