@@ -14,6 +14,7 @@ const requiredFiles = [
   'references/mutation-idempotency.md',
   'references/post-interview-workflow.md',
   'references/overlays/opportunity.md',
+  'references/stakes-ledger.md',
   'references/adapters/email.md',
   'references/adapters/crm.md',
   'references/adapters/meetings.md',
@@ -147,6 +148,10 @@ const requiredScenarioIds = [
   'TTS-ENGLISH-FULL', 'TTSC-CHINESE-PROGRESS',
   'CRM-FIRST-STALE-OVERLAY', 'EMAIL-FOLDER-NOT-PIPELINE', 'DATE-DECAY-NO-INFERENCE',
   'SAME-COMPANY-ROLE-SEPARATION',
+  'EMAIL-TRIAGE-NO-CALENDAR', 'EMAIL-ENVELOPE-ARRIVAL', 'EMAIL-CACHE-WATERMARK',
+  'EMAIL-TOPIC-100PCT-REDACT', 'EMAIL-DIRECTION-SERVICE-ALERT', 'EMAIL-MIME-MOJIBAKE-REPAIR',
+  'EMAIL-RELEASE-AND-AWARD', 'EMAIL-TRIAGE-BUNDLE-SAMI-SCOPE', 'EMAIL-PRIOR-SESSION-CARRY',
+  'EMAIL-INLINE-NO-SCRATCH-FILES',
 ];
 for (const id of requiredScenarioIds) {
   if (!ids.includes(id)) errors.push(`Missing acceptance scenario ID: ${id}`);

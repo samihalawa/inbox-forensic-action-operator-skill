@@ -33,14 +33,14 @@ complete.
 
 Search organization, person, domain, phone/JID, role, requisition, and aliases before
 creating anything. Preserve Twenty's native model: organization as Company, person as
-Person, distinct role/assignment/deal as Opportunity, next action as Task, meeting as
+Person, distinct role/assignment/deal as Opportunity, next action as Task (except in post-interview/recruiter workflows, which create no CRM Tasks and preserve stage, ball-in-court, native draft, or calendar event instead), meeting as
 Calendar Event, email as native Message/Message Thread, and freeform CRM context as
-Note. Use the existing custom Interaction object only for external activity that lacks
+Note. Use the existing custom External Activity / Interaction object (verify exact API name via `/rest/metadata/objects`) only for external history that lacks
 a native representation.
 
 Read current records and complete latest activities from both directions. Separate activity creation/sync time from the communication event time. CRM stages and labels are leads until primary communication/provider evidence supports them.
 
-Prevent duplicate People, Companies, Opportunities, external Interactions, and open
+Prevent duplicate People, Companies, Opportunities, External Activities / Interactions, and open
 action Tasks. Mutate only under explicit authority, using full live IDs or deterministic
 source IDs, then read back every field, object, and relation. CRM organization is not
 proof an external event occurred.

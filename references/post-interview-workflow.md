@@ -1,8 +1,8 @@
 # Post-Interview Opportunity Module
 
 Load this module after the core context graph is reconstructed when a completed or attempted conversation requires recording, calendar, CRM, artifact, or follow-up work.
-+
-# Post-Interview Sync, Transcript, Tailored Resume & Follow-Up
+
+## Post-Interview Sync, Transcript, Tailored Resume & Follow-Up
 
 ## Outcome
 
@@ -212,7 +212,7 @@ Use the existing native manual Opportunity workflow before building anything new
 
 ### Reconcile native WhatsApp history through GOWA
 
-When the contact used WhatsApp, use the `gowa-whatsapp-api` skill before final Twenty stage and ball-in-court classification:
+When the contact used WhatsApp, use the `gowa-whatsapp-skill` (and `references/adapters/whatsapp.md`) before final Twenty stage and ball-in-court classification:
 
 1. call `GET /devices` and select the logged-in device that actually contains the exact E.164 phone/JID;
 2. read the full current chat through `/chat/{JID}/messages`, including messages after the meeting;

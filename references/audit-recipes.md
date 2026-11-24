@@ -6,12 +6,13 @@
 - Entity Status
 - Attention
 - Opportunity Truth Audit
+- Complete Email Triage & Report Bundle
 - Delivery
 - Recovery
 - Frozen Adjacent-Window Fanout
 - Recipe Stop Record
 
-Select one primary recipe. Add another only when the request explicitly needs both outputs.
+Select one primary recipe (`coverage`, `entity-status`, `attention`, `delivery`, or `recovery`). Add another only when the request explicitly needs both outputs. `Opportunity Truth Audit` and `Complete Email Triage & Report Bundle` (`email-triage-report`) are composite report workflows built on those base recipes (`coverage` + `attention`, plus `entity-status` for Opportunity Truth Audit). Map requests containing `"fully"`, a bounded email window (e.g. 72h / 7d), or `"complete report"` automatically to `email-triage-report` without requiring the user to name the recipe.
 
 ## Coverage
 
@@ -37,22 +38,9 @@ For any thread containing an in-window event, retrieve the older messages needed
 
 Inspect the next seven days of known deadlines from original emails, attachments, and native provider notices as a separate forward-obligation check, never as retrospective activity. Do not use Google Calendar for inbox triage or recurring inbox reports unless the user explicitly asks for calendar scheduling; Calendar absence never excludes an inbox-only hearing, deadline, or obligation. Carry forward every unresolved material obligation found in an existing canonical state, prior cross-platform triage (`$seven-platform-chat-cli`), or current opportunity graph regardless of age. Do not call a seven-day message window a complete historical opportunity inventory.
 
-## Complete Email Triage & Report Bundle
-
-Use this recipe when the user asks for a complete 72-hour or rolling-window email triage and report (`email-triage-report`):
-
-1. **Zero-filter full enumeration + arrival adjustment:** Exhaust 100% of candidate IDs and reconcile live Gmail `internalDate` against local `Envelope Index` arrival times (see [Email adapter](adapters/email.md)).
-2. **Thread, Sent & Draft verification:** Check later `Sent` messages, `Drafts` (`DRAFT` != `Sent`), and same-reference portal notices before flagging any thread as waiting on the user. Verify app/product release history against repo or store records so routine updates are not mislabeled as first launches. Include all outbound campaign and commercial/advertising replies (not only tenders or job recruiting), and keep framework/DPS/panel admissions distinct from awarded contracts.
-3. **Noise separation with 100% accounting:** Keep routine billing, payment receipts, OTPs/verification codes, generic security alerts, newsletters, and bulk automated tender digests out of executive action queues, while accounting for every single message in the dynamic Topic Breakdown (`sum(topics) == N`) and retaining all rows in the full HTML/CSV census with OTPs redacted as `[code withheld]`.
-4. **Canonical deliverables:** Persist to the owner's canonical reports directory (`AI_REPORTS_MASTER/` and update `INDEX.md`):
-   - **Executive Markdown report:** headline verdict, Coverage & Provenance Ledger, Fresh Delta since the prior edition, Urgent Deadlines & Preventable-Loss Queue, People Waiting on User, Verified Achievements, Waiting on Others, Cross-Channel Corroboration (calls/WhatsApp/SMS kept separate), and 100% Topic Breakdown.
-   - **Searchable interactive HTML census:** every message `1..N` in its dynamic topic table with live search, noise/actionable toggles, direct thread links, redacted OTPs, and 1-click CSV export.
-   - **Printable A4 PDF:** rendered from the executive report and verified for page count and readability.
-   - **Verified audio (when requested):** generated only from the final verified report text and checked end-to-end with `ffprobe` and `ffmpeg -v error -i <file> -f null -`.
-
 ### Enumerate Before Relevance Filtering
 
-First manifest every accessible email account and verified owned alias plus Inbox, Sent, Archive/All Mail, Spam/Junk, Drafts, Trash/Deleted when accessible, categories, folders, and labels. Also manifest Calendar, CRM, LinkedIn/recruiter channels, ATS/employer portals, WhatsApp/business chat, recordings/transcripts, and every other connected native source that can prove opportunity state. A known but undiscovered, disconnected, inaccessible, or unauthenticated source is `unknown`, `missing`, or `blocked`, never covered.
+First manifest every accessible email account and verified owned alias plus Inbox, Sent, Archive/All Mail, Spam/Junk, Drafts, Trash/Deleted when accessible, categories, folders, and labels. Also manifest Calendar (only when calendar scheduling or meeting verification is explicitly in scope; omit Google Calendar in inbox-only triage), CRM, LinkedIn/recruiter channels, ATS/employer portals, WhatsApp/business chat, recordings/transcripts, and every other connected native source that can prove opportunity state. A known but undiscovered, disconnected, inaccessible, or unauthenticated source is `unknown`, `missing`, or `blocked`, never covered.
 
 Derive audit scope from current connection metadata and user-confirmed inclusions or exclusions, not the login address or every visible connector. When provider identity proves that current and former aliases resolve to one renamed mailbox, audit it once while preserving both addresses for direction checks. Do not double-count it as two accounts.
 
@@ -60,7 +48,7 @@ Enumerate every unique seven-day email before applying opportunity keywords, unr
 
 For every unique message, read the complete body, including Spam and automated mail, and retain account, folder/labels, message/thread IDs, timestamp and original timezone, `From`, `To`, `Cc`, available `Bcc`, relevant `Reply-To`, direction, subject, first meaningful lines, attachment names, and attachment accessibility. Determine direction from actual headers, mailbox context, and verified owned identities, not display names, prose, signatures, or visible thread position.
 
-Inspect decisive attachments, protected links, and instructions when read-only access exists. If an item cannot be read, name it and the conclusion it prevents. For every consequential opportunity, reconstruct the complete available entity thread and reconcile current Calendar, CRM, ATS, LinkedIn, recording, message, and provider-owned state.
+Inspect decisive attachments, protected links, and instructions when read-only access exists. If an item cannot be read, name it and the conclusion it prevents. For every consequential opportunity, reconstruct the complete available entity thread and reconcile current Calendar (when scheduling/meetings are in scope), CRM, ATS, LinkedIn, recording, message, and provider-owned state.
 
 For every source record identity, route, bounds/order, cursors/ranges, returned and deduplicated counts, hydration, full-thread status, coverage, failure origin, and proof remaining. If any required source cannot be exhausted, the overall audit is partial and cannot return `all done`.
 
@@ -70,7 +58,7 @@ If subagents are available, use one coordinator to freeze scope and reconcile to
 
 After the source manifest, context-check Twenty first when accessible. Load `$twenty-crm-best-practices`, current-probe the live metadata and supported read routes, and use current People, Companies, Opportunities, activities, tasks, messages, meetings, and relations to seed exact entity IDs, stages, ball-in-court, next steps, due dates, and reconciliation freshness. Never hard-code remembered field names, enum values, object relations, or historical deployment contracts.
 
-Then enumerate the complete seven-day mailbox corpus and other native sources independently of CRM relevance. CRM is the opportunity graph, not infallible event truth: a newer exact email, Calendar, ATS, meeting, contract, payment, or provider record supersedes a stale CRM stage or next step. Mark the contradiction and stale layer; do not silently blend them. Folder names, labels, priority inboxes, custom views, and unread state are collection or triage signals, never proof of pipeline stage, owner, value, or importance.
+Then enumerate the complete seven-day mailbox corpus and other native sources independently of CRM relevance. CRM is the opportunity graph, not infallible event truth: a newer exact email, Calendar (when in scope), ATS, meeting, contract, payment, or provider record supersedes a stale CRM stage or next step. Mark the contradiction and stale layer; do not silently blend them. Folder names, labels, priority inboxes, custom views, and unread state are collection or triage signals, never proof of pipeline stage, owner, value, or importance.
 
 Keep separate roles, requisitions, applications, or engagements under the same organization. Shared people, domains, subjects, or last-contact fields are pivots, not merge proof. Treat CRM aggregate application or submission counts as activity volume, not advancement, conversion, revenue, or evidence that critical obligations were protected.
 
@@ -161,6 +149,22 @@ Write directly and sentimentlessly for a standalone reader. Criticize observable
 Every run refreshes native state. Load the existing canonical CRM/state register and prior report when available; never create a competing tracker merely because the current agent lacks chat history. Compare by stable IDs only when a prior report or shared canonical state is actually available; otherwise say no prior baseline was available. Classify prior items as new, advanced, resolved, unchanged, deteriorated, reopened, disappeared from accessible evidence, or previously misclassified. Remove an action only when current provider evidence proves the promised completion layer. Preserve deadline-at-the-time history and exact score denominators. Under read-only authority, return a normalized state delta and report snapshot for the caller; persist them only when the invocation authorizes the existing destination and the write is read back.
 
 Operational zero requires every accessible source exhausted; no critical/high-value user-owned action, recoverable valuable miss, imminent valuable deadline, unresolved ownership, or unreconciled meeting; no draft/attempt mistaken for completion; and every remaining live process verified as waiting on others with an evidence-based monitoring date. Then say `No meaningful user-owned opportunity action remains at this time.` If coverage or ownership remains incomplete, return `unknown`/`CHECKPOINT` instead of `all done`.
+
+## Complete Email Triage & Report Bundle
+
+Use this composite workflow (`email-triage-report`, built on `coverage` + `attention`) whenever the user asks for a complete 72-hour or rolling-window email triage (`"fully"`, `"complete report"`, or bounded email window):
+
+1. **Email-only scope & inline execution (no Calendar / no unasked CRM drift / zero scratch files):** Inventory accessible email accounts, aliases, and mail folders only; exclude Google Calendar unless scheduling is explicitly requested; do not drift into Twenty CRM or `$twenty-crm-sami-judge-skill` when the request is read-only email triage without CRM scope. Use WhatsApp/calls/SMS only when explicitly requested or needed to resolve a named consequential email, keeping counts strictly separate. Execute all queries, hydration, MIME repair, classification, and PDF rendering inline in memory (`python3 -`, `node -e`, `data:text/html;base64,...`) — never create helper scripts, temp JSON dumps, or intermediate HTML files.
+2. **Zero-filter enumeration, arrival adjustment & secondary cache hydration:** Follow [Freeze The Windows](audit-recipes.md) (referencing `Freeze The Windows` above) and [Email adapter](adapters/email.md): exhaust Gmail `in:anywhere` (`includeSpamTrash=true`), repair MIME/UTF-8 mojibake, separate `"SENT" in labelIds` user-authored outbound from self-addressed service alerts, reconcile Apple Mail `Envelope Index` + `.emlx` RFC `Message-ID`s for `arrival-adjusted` rows, and enumerate/hydrate all in-window local rows on `cache-only` secondary accounts.
+3. **Seven-platform miss recovery (`$seven-platform-chat-cli`):** Search Codex (active + archived), Claude Code, Antigravity, ChatGPT.com, Claude.ai, Gemini Web, and Grok.com for prior email/inbox/triage/report threads; record `searched`, `matched`, and `read (Done X / N)` per platform; treat prior threads as discovery leads for missed accounts, aliases, or carry-forward obligations and verify current state in primary mail/portals.
+4. **Thread, Sent, Draft & release-history verification:** Check later `Sent` replies, `Drafts` (`Draft (unsent latest)` vs `Draft (superseded by Sent)`), and same-reference portal notices before flagging any thread as waiting on the user. Verify app/product release history against repo or store records so routine updates are not mislabeled as first launches. Sweep **all** outbound campaign and commercial/advertising replies (not only tenders or job recruiting), and keep framework/DPS/panel admissions distinct from awarded contracts.
+5. **Noise separation with 100% accounting & global redaction:** Keep *settled/routine* billing, payment receipts, OTPs/PINs, *non-actionable* generic security notices, newsletters, and bulk automated tender digests out of executive action queues—while surfacing failed payments, paused/suspended subscriptions, and account-takeover/Takeout/unrecognized-login alerts (`PROVIDER-ALERT`)—account for every message in dynamic Topic Breakdown (`sum(topics) == N`), and redact all codes and credential-bearing URLs (`[code withheld]` / `[withheld]`) across Markdown, HTML, and CSV exports.
+6. **Canonical deliverables & verification gates:** Persist only the requested deliverables to `AI_REPORTS_MASTER/` and update `INDEX.md`:
+   - **Executive Markdown report:** headline verdict, Coverage & Provenance Ledger, Fresh Delta since the prior edition, Urgent Deadlines & Preventable-Loss Queue, People Waiting on User, Verified Achievements, Waiting on Others, Cross-Channel Corroboration (when in scope, kept separate), Seven-Platform Inventory (`Done X / N`), and 100% Topic Breakdown.
+   - **Searchable interactive HTML census:** every message `1..N` in its dynamic topic table with live search, noise/actionable toggles, direct thread links, redacted fields, and 1-click CSV export. Verify `N == unique HTML rows == CSV rows` and zero unredacted codes or mojibake.
+   - **Printable A4 PDF:** rendered inline from the final verified Markdown and verified for page count and readability.
+   - **Verified audio (when requested):** generated only from the final verified report text and checked end-to-end with `ffprobe` and `ffmpeg -v error -i <file> -f null -`.
+   - Read back saved files and the updated `INDEX.md` row before closing.
 
 ## Delivery
 
